@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>מסלול טיול משפחתי ברומניה - 11 ימים</title>
+    <title>מסלול טיול משפחתי ברומניה - 14 ימים</title>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -17,12 +17,19 @@
             --text: #1e293b;
             --text-muted: #64748b;
             --border-color: #e2e8f0;
-            --badge-bg: #fef3c7;
-            --badge-text: #92400e;
+            --badge-bg: #f3e8ff;
+            --badge-text: #6b21a8;
             --accommodation-bg: #eff6ff;
             --input-bg: #ffffff;
             --tab-bg: #e2e8f0;
             --tab-text: #1e293b;
+            --weather-box-bg: #f1f5f9;
+            --tip-box-bg: #f3e8ff;
+            --tip-box-border: #8b5cf6;
+            --tip-box-text: #4c1d95;
+            --info-box-bg: #f0fdf4;
+            --info-box-border: #22c55e;
+            --info-box-text: #14532d;
         }
 
         [data-theme="dark"] {
@@ -34,12 +41,19 @@
             --text: #f1f5f9;
             --text-muted: #94a3b8;
             --border-color: #334155;
-            --badge-bg: #78350f;
-            --badge-text: #fef3c7;
+            --badge-bg: #581c87;
+            --badge-text: #f3e8ff;
             --accommodation-bg: #1e3a8a33;
             --input-bg: #334155;
             --tab-bg: #334155;
             --tab-text: #f1f5f9;
+            --weather-box-bg: #0f172a;
+            --tip-box-bg: #3b0764;
+            --tip-box-border: #a855f7;
+            --tip-box-text: #f3e8ff;
+            --info-box-bg: #052e16;
+            --info-box-border: #16a34a;
+            --info-box-text: #dcfce7;
         }
 
         * {
@@ -105,6 +119,31 @@
             padding: 1rem;
         }
 
+        .pro-tip-box {
+            background-color: var(--tip-box-bg);
+            border-right: 5px solid var(--tip-box-border);
+            color: var(--tip-box-text);
+            padding: 1.2rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
+
+        .pro-tip-box h3, .pro-tip-box h4 {
+            margin: 0 0 8px 0;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pro-tip-box p {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
         .widgets-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -131,10 +170,19 @@
         }
 
         .weather-info {
-            display: flex;
-            justify-content: space-around;
-            text-align: center;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
             margin-top: 1rem;
+        }
+
+        .weather-item {
+            background-color: var(--weather-box-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            transition: background-color 0.3s, border-color 0.3s;
         }
 
         .weather-city {
@@ -143,9 +191,10 @@
         }
 
         .weather-temp {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: var(--secondary);
             font-weight: bold;
+            margin-top: 4px;
         }
 
         .converter-inputs {
@@ -248,6 +297,7 @@
             border-radius: 12px;
             font-size: 0.8rem;
             margin-bottom: 6px;
+            transition: background 0.3s, color 0.3s;
         }
 
         .item-title {
@@ -269,6 +319,13 @@
             border-radius: 8px;
         }
 
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
         .btn-map {
             display: inline-flex;
             align-items: center;
@@ -282,10 +339,139 @@
             font-size: 0.85rem;
             font-weight: bold;
             transition: opacity 0.2s;
+            border: none;
+            cursor: pointer;
         }
 
         .btn-map:hover {
             opacity: 0.9;
+        }
+
+        .btn-info {
+            background-color: #f59e0b;
+            color: white;
+        }
+
+        /* תיבת מידע מורחבת כפתור Info */
+        .info-drawer {
+            display: none;
+            background-color: var(--info-box-bg);
+            border-right: 4px solid var(--info-box-border);
+            color: var(--info-box-text);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 12px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .info-drawer h5 {
+            margin: 0 0 6px 0;
+            font-size: 0.95rem;
+            color: var(--info-box-border);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .info-drawer ul {
+            margin: 6px 0 0 0;
+            padding-right: 18px;
+        }
+
+        .info-drawer li {
+            margin-bottom: 4px;
+        }
+
+        .info-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .info-list li {
+            padding: 12px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .info-list li:last-child {
+            border-bottom: none;
+        }
+
+        .info-list i {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+
+        /* עיצוב כרטיסי טיסה */
+        .flight-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .flight-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .flight-route {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-align: center;
+            gap: 15px;
+        }
+
+        .flight-airport {
+            flex: 1;
+        }
+
+        .flight-airport h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .flight-airport p {
+            margin: 4px 0 0 0;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .flight-duration {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .flight-duration i {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin: 5px 0;
+        }
+
+        .confirmed-badge {
+            background-color: #10b981;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
         }
 
         @media(min-width: 600px) {
@@ -316,24 +502,30 @@
             <span id="themeText">מצב כהה</span>
         </button>
         <h1><i class="fa-solid fa-plane-departure"></i> מסלול טיול משפחתי ברומניה</h1>
-        <p>11 ימים | ברשוב, סגישוארה ובוקרשט</p>
+        <p>14 ימים | ברשוב, סגישוארה ובוקרשט</p>
     </header>
 
     <div class="container">
+
+        <!-- טיפ מעשי מנצח -->
+        <div class="pro-tip-box">
+            <h3><i class="fa-solid fa-lightbulb"></i> טיפ מעשי מנצח לרומניה</h3>
+            <p><strong>ניווט, תשלומים וחנייה:</strong> הורידו מראש מפות אופליין ב-Google Maps. ודאו שחברת השכרת הרכב כוללת מדבקת כבישי אגרה (Rovinieta). לתשלום חנייה בערים הגדולות השתמשו באפליקציית <strong>TPARK</strong>. שימו לב: באזורי ההרים והטבע ייתכן מפגש עם דובים - אין להתקרב או להאכיל אותם בשום אופן!</p>
+        </div>
 
         <div class="widgets-grid">
             <div class="widget-card">
                 <h3><i class="fa-solid fa-cloud-sun"></i> מזג אוויר עדכני</h3>
                 <div class="weather-info">
-                    <div>
+                    <div class="weather-item">
                         <div class="weather-city">ברשוב</div>
                         <div class="weather-temp">22°C</div>
                     </div>
-                    <div>
+                    <div class="weather-item">
                         <div class="weather-city">סגישוארה</div>
                         <div class="weather-temp">24°C</div>
                     </div>
-                    <div>
+                    <div class="weather-item">
                         <div class="weather-city">בוקרשט</div>
                         <div class="weather-temp">27°C</div>
                     </div>
@@ -350,32 +542,114 @@
         </div>
 
         <div class="tabs-container" id="tabsContainer">
-            <button class="tab-btn active" onclick="switchTab(0)">יום 1 (15/09)</button>
-            <button class="tab-btn" onclick="switchTab(1)">יום 2 (16/09)</button>
-            <button class="tab-btn" onclick="switchTab(2)">יום 3 (17/09)</button>
-            <button class="tab-btn" onclick="switchTab(3)">יום 4 (18/09)</button>
-            <button class="tab-btn" onclick="switchTab(4)">יום 5 (19/09)</button>
-            <button class="tab-btn" onclick="switchTab(5)">יום 6 (20/09)</button>
-            <button class="tab-btn" onclick="switchTab(6)">יום 7 (21/09)</button>
-            <button class="tab-btn" onclick="switchTab(7)">יום 8 (22/09)</button>
-            <button class="tab-btn" onclick="switchTab(8)">יום 9 (23/09)</button>
-            <button class="tab-btn" onclick="switchTab(9)">יום 10 (24/09)</button>
-            <button class="tab-btn" onclick="switchTab(10)">יום 11 (25/09)</button>
+            <button class="tab-btn active" onclick="switchTab(0)"><i class="fa-solid fa-plane"></i> כרטיסי טיסה</button>
+            <button class="tab-btn" onclick="switchTab(1)">יום 1 (15/09)</button>
+            <button class="tab-btn" onclick="switchTab(2)">יום 2 (16/09)</button>
+            <button class="tab-btn" onclick="switchTab(3)">יום 3 (17/09)</button>
+            <button class="tab-btn" onclick="switchTab(4)">יום 4 (18/09)</button>
+            <button class="tab-btn" onclick="switchTab(5)">יום 5 (19/09)</button>
+            <button class="tab-btn" onclick="switchTab(6)">יום 6 (20/09)</button>
+            <button class="tab-btn" onclick="switchTab(7)">יום 7 (21/09)</button>
+            <button class="tab-btn" onclick="switchTab(8)">יום 8 (22/09)</button>
+            <button class="tab-btn" onclick="switchTab(9)">יום 9 (23/09)</button>
+            <button class="tab-btn" onclick="switchTab(10)">יום 10 (24/09)</button>
+            <button class="tab-btn" onclick="switchTab(11)">יום 11 (25/09)</button>
+            <button class="tab-btn" onclick="switchTab(12)">יום 12 (26/09)</button>
+            <button class="tab-btn" onclick="switchTab(13)">יום 13 (27/09)</button>
+            <button class="tab-btn" onclick="switchTab(14)">יום 14 (28/09)</button>
+            <button class="tab-btn" onclick="switchTab(15)"><i class="fa-solid fa-circle-info"></i> מידע וטיפים</button>
+        </div>
+
+        <!-- לשונית כרטיסי טיסה -->
+        <div id="day-0" class="day-content active">
+            <div class="pro-tip-box">
+                <h4><i class="fa-solid fa-plane"></i> פרטי טיסות מאושרות (Wizz Air)</h4>
+                <p>ודאו ביצוע צ'ק-אין אונליין מראש והכינו את כרטיסי העלייה למטוס באפליקציה.</p>
+            </div>
+
+            <div class="flight-card">
+                <div class="flight-header">
+                    <div>
+                        <strong>טיסת הלוך:</strong> 15 בספטמבר
+                        <span style="margin-right: 10px; color: var(--text-muted); font-size: 0.9rem;">מספר טיסה: W43258</span>
+                    </div>
+                    <span class="confirmed-badge"><i class="fa-solid fa-check"></i> Confirmed</span>
+                </div>
+                <div class="flight-route">
+                    <div class="flight-airport">
+                        <h3>TLV</h3>
+                        <p>תל אביב</p>
+                        <strong>09:20 AM</strong>
+                    </div>
+                    <div class="flight-duration">
+                        <span>2h 50m</span>
+                        <i class="fa-solid fa-plane"></i>
+                        <span>ישיר</span>
+                    </div>
+                    <div class="flight-airport">
+                        <h3>OTP</h3>
+                        <p>בוקרשט אוטופני</p>
+                        <strong>12:10 PM</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flight-card">
+                <div class="flight-header">
+                    <div>
+                        <strong>טיסת חזור:</strong> 28 בספטמבר
+                        <span style="margin-right: 10px; color: var(--text-muted); font-size: 0.9rem;">מספר טיסה: W43263</span>
+                    </div>
+                    <span class="confirmed-badge"><i class="fa-solid fa-check"></i> Confirmed</span>
+                </div>
+                <div class="flight-route">
+                    <div class="flight-airport">
+                        <h3>OTP</h3>
+                        <p>בוקרשט אוטופני</p>
+                        <strong>13:10 PM</strong>
+                    </div>
+                    <div class="flight-duration">
+                        <span>2h 40m</span>
+                        <i class="fa-solid fa-plane"></i>
+                        <span>ישיר</span>
+                    </div>
+                    <div class="flight-airport">
+                        <h3>TLV</h3>
+                        <p>תל אביב</p>
+                        <strong>15:50 PM</strong>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- יום 1 -->
-        <div id="day-0" class="day-content active">
+        <div id="day-1" class="day-content">
+            <div class="pro-tip-box">
+                <h4><i class="fa-solid fa-wand-magic-sparkles"></i> טיפ מעשי ליום 1</h4>
+                <p>כביש DN1 מבוקרשט לברשוב נוטה לעומסים כבדים בסופי שבוע ובראשון. מומלץ לצאת מהשדה בהקדם האפשרי ולא לעצור ליותר מארוחה קצרה בדרך כדי להימנע מפקקים בכניסה להרים.</p>
+            </div>
             <div class="accommodation-info">
-                <div><strong><i class="fa-solid fa-hotel"></i> לינה:</strong> Brasov Holiday Apartments (Strada Egretei Nr. 3, Brașov)</div>
+                <div><strong><i class="fa-solid fa-hotel"></i> לינה (15/09 - 21/09):</strong> Brasov Holiday Apartments (Strada Egretei Nr. 3, 500461 Braşov, Romania)</div>
                 <a href="https://maps.google.com/?q=Strada+Egretei+3+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט ללינה</a>
             </div>
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="item-details">
-                        <span class="time-badge">13:00</span>
+                        <span class="time-badge">12:10</span>
                         <h4 class="item-title">נחיתה בבוקרשט</h4>
-                        <p class="item-desc">איסוף הרכב ויציאה צפונה על כביש DN1.</p>
-                        <a href="https://maps.google.com/?q=Henri+Coandă+International+Airport" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <p class="item-desc">נחיתה בנמל התעופה הונרי קואנדה (OTP), איסוף הרכב השכור ויציאה צפונה על כביש DN1.</p>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Henri+Coandă+International+Airport" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-1-1')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-1-1" class="info-drawer">
+                            <h5><i class="fa-solid fa-circle-info"></i> מה לעשות / דגשים חשובים:</h5>
+                            <ul>
+                                <li><strong>איסוף רכב:</strong> צלמו מכל הזוויות את הרכב בעת הלקחתו (במיוחד שריטות קיימות ומצב הצמיגים).</li>
+                                <li><strong>תקשורת:</strong> רכשו סים מקומי בדלפק בשדה אם לא פעלתם עם eSIM מראש.</li>
+                                <li><strong>מידע נוסף:</strong> ודאו שקיבלתם את מדבקת/אישור Rovinieta מחברת ההשכרה.</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1542296332-2e4473faf563?auto=format&fit=crop&w=500&q=80" alt="שדה תעופה" class="item-img">
                 </div>
@@ -384,7 +658,17 @@
                         <span class="time-badge">15:00</span>
                         <h4 class="item-title">ארוחת צהריים ב-La Mama Sinaia</h4>
                         <p class="item-desc">ארוחה עממית ומקומית בדרך צפונה.</p>
-                        <a href="https://maps.google.com/?q=La+Mama+Sinaia" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=La+Mama+Sinaia" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-1-2')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-1-2" class="info-drawer">
+                            <h5><i class="fa-solid fa-cutlery"></i> מה לטעום / המלצות:</h5>
+                            <ul>
+                                <li><strong>מנות מומלצות:</strong> מרק צ'ורבה בשעועית/חמוץ (Ciorbă) וממליגה עם גבינה ושמנת.</li>
+                                <li><strong>ליד המסעדה:</strong> אם יש לכם 20 דקות חופשיות, עשו סיבוב קצר במדרחוב המקסים של סינאיה.</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=500&q=80" alt="מסעדה" class="item-img">
                 </div>
@@ -393,7 +677,16 @@
                         <span class="time-badge">17:30</span>
                         <h4 class="item-title">הגעה לדירה בברשוב</h4>
                         <p class="item-desc">צ'ק-אין בדירה (Strada Egretei 3) והתרעננות.</p>
-                        <a href="https://maps.google.com/?q=Strada+Egretei+3+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Strada+Egretei+3+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-1-3')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-1-3" class="info-drawer">
+                            <h5><i class="fa-solid fa-house"></i> סידורים והתארגנות:</h5>
+                            <ul>
+                                <li><strong>הצטיידות:</strong> בסמוך לדירה ישנם סופרמרקטים (Kaufland / Lidl) להצטיידות במים, חלב ונשנושים לילדים לימים הקרובים.</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=500&q=80" alt="דירה" class="item-img">
                 </div>
@@ -402,7 +695,17 @@
                         <span class="time-badge">18:30</span>
                         <h4 class="item-title">כיכר המועצה (Piața Sfatului)</h4>
                         <p class="item-desc">נסיעה למרכז העתיק (חנייה: Parcare Livada Poștei) וסיבוב ערב בכיכר.</p>
-                        <a href="https://maps.google.com/?q=Pia%C8%9Ba+Sfatului+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Pia%C8%9Ba+Sfatului+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-1-4')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-1-4" class="info-drawer">
+                            <h5><i class="fa-solid fa-walk"></i> מה לעשות בכיכר:</h5>
+                            <ul>
+                                <li><strong>קורטוש קאלאץ' מקומי:</strong> קנו קורטוש חם וטרי באחד הדוכנים מסביב לכיכר.</li>
+                                <li><strong>צילום:</strong> נקודת תמונה מעולה על רקע בניין בית העירייה הישן והמזרקה במרכז.</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1584646098378-0874589d76b1?auto=format&fit=crop&w=500&q=80" alt="ברשוב" class="item-img">
                 </div>
@@ -411,7 +714,17 @@
                         <span class="time-badge">19:30</span>
                         <h4 class="item-title">ארוחת ערב ב-Sergiana</h4>
                         <p class="item-desc">אוכל רומני מסורתי במרתף אבן.</p>
-                        <a href="https://maps.google.com/?q=Sergiana+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Sergiana+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-1-5')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-1-5" class="info-drawer">
+                            <h5><i class="fa-solid fa-utensils"></i> דגשים למסעדה:</h5>
+                            <ul>
+                                <li><strong>לחם ושומן חזיר/בצל:</strong> במסעדה מגישים פתיח מסורתי חינם של שומן ובצל סגול על הלחם.</li>
+                                <li><strong>מנות מומלצות:</strong> מיטיטיי (Mici - קבב רומני) או צלעות חזיר מעושנות.</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=500&q=80" alt="מסעדת סרג'יאנה" class="item-img">
                 </div>
@@ -419,9 +732,13 @@
         </div>
 
         <!-- יום 2 -->
-        <div id="day-1" class="day-content">
+        <div id="day-2" class="day-content">
+            <div class="pro-tip-box">
+                <h4><i class="fa-solid fa-wand-magic-sparkles"></i> טיפ מעשי ליום 2</h4>
+                <p>לטירת בראן מומלץ להזמין כרטיסים מראש באינטרנט כדי לדלג על התור בקופות. החנייה ליד Dino Parc מתמלאת במהירות, הגיעו לפני 10:00 בבוקר.</p>
+            </div>
             <div class="accommodation-info">
-                <div><strong><i class="fa-solid fa-hotel"></i> לינה:</strong> Brasov Holiday Apartments</div>
+                <div><strong><i class="fa-solid fa-hotel"></i> לינה (15/09 - 21/09):</strong> Brasov Holiday Apartments (Strada Egretei Nr. 3, Brașov)</div>
                 <a href="https://maps.google.com/?q=Strada+Egretei+3+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט ללינה</a>
             </div>
             <div class="timeline">
@@ -430,16 +747,36 @@
                         <span class="time-badge">09:30</span>
                         <h4 class="item-title">Dino Parc Râșnov</h4>
                         <p class="item-desc">ביקור בפארק הדינוזאורים (חנייה: Parcare Cetatea Râșnov).</p>
-                        <a href="https://maps.google.com/?q=Dino+Parc+Rasnov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Dino+Parc+Rasnov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-2-1')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-2-1" class="info-drawer">
+                            <h5><i class="fa-solid fa-dragon"></i> אטרקציות בפארק שלא כדאי לפספס:</h5>
+                            <ul>
+                                <li><strong>סינמה 9D ופארק חבלים קטן:</strong> בתוך הפארק יש אולמות קולנוע חווייתיים ומתחם טיפוס לילדים.</li>
+                                <li><strong>דינוזאורים נעים ומרעישים:</strong> מסלול הליכה ביער בין עשרות דגמים בגודל טבעי.</li>
+                                <li><strong>רכבת הקרוניות:</strong> העלייה מהחניון לפארק נעשית ברכבת קרוניות חמודה שהילדים מאוד אוהבים.</li>
+                            </ul>
+                        </div>
                     </div>
-                    <img src="https://images.unsplash.com/photo-1517999186661-ac0f01ba3e99?auto=format&fit=crop&w=500&q=80" alt="דינו פארק" class="item-img">
+                    <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=500&q=80" alt="דינו פארק" class="item-img">
                 </div>
                 <div class="timeline-item">
                     <div class="item-details">
                         <span class="time-badge">12:30</span>
                         <h4 class="item-title">ארוחת צהריים - Taverna Bran</h4>
                         <p class="item-desc">ארוחה עממית ב-Restaurant Taverna Bran.</p>
-                        <a href="https://maps.google.com/?q=Taverna+Bran" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Taverna+Bran" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-2-2')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-2-2" class="info-drawer">
+                            <h5><i class="fa-solid fa-utensils"></i> המלצות מקומיות:</h5>
+                            <ul>
+                                <li>מסעדה כפרית מעולה הממוקמת ממש בקרבת הטירה עם נוף יפה ואוכל רומני ובינלאומי עשיר.</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=500&q=80" alt="מסעדה" class="item-img">
                 </div>
@@ -448,7 +785,18 @@
                         <span class="time-badge">14:00</span>
                         <h4 class="item-title">טירת בראן (Bran Castle)</h4>
                         <p class="item-desc">ביקור בטירה (חנייה: Parcare Castel Bran).</p>
-                        <a href="https://maps.google.com/?q=Bran+Castle" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Bran+Castle" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-2-3')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-2-3" class="info-drawer">
+                            <h5><i class="fa-solid fa-castle"></i> מה לראות בטירה ובסביבתה:</h5>
+                            <ul>
+                                <li><strong>חצר פנימית ומעברים נסתרים:</strong> חפשו את גרם המדרגות הנסתר המקשר בין הקומות.</li>
+                                <li><strong>שוק המזכרות למרגלות הטירה:</strong> מקום מעולה לקניית מזכרות, גבינות מעושנות מקומיות ונקניקים.</li>
+                                <li><strong>מנהרת הזמן (Time Tunnel):</strong> מעלית שקופה עם מופע מולטימדיה (בתשלום נפרד בכניסה).</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1599940824399-b87987ceb72a?auto=format&fit=crop&w=500&q=80" alt="טירת בראן" class="item-img">
                 </div>
@@ -457,7 +805,17 @@
                         <span class="time-badge">16:30</span>
                         <h4 class="item-title">סיור בעיר העתיקה ברשוב</h4>
                         <p class="item-desc">הכנסייה השחורה, רחוב החבלים הצר (Strada Sforii) ומדרחוב הרפובליקה.</p>
-                        <a href="https://maps.google.com/?q=Biserica+Neagra+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Biserica+Neagra+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-2-4')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-2-4" class="info-drawer">
+                            <h5><i class="fa-solid fa-map-location-dot"></i> נקודות עניין חשובות:</h5>
+                            <ul>
+                                <li><strong>רחוב החבלים (Strada Sforii):</strong> אחד הרחובות הצרים באירופה – תמונה חובה לילדים המנסים לגעת בשני הקירות בו-זמנית!</li>
+                                <li><strong>שער שחי (Poarta Șchei) ושער קטרינה:</strong> שערי העיר העתיקים והציוריים בקרבת מקום.</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1513581166391-887a96ddeafd?auto=format&fit=crop&w=500&q=80" alt="הכנסייה השחורה" class="item-img">
                 </div>
@@ -466,7 +824,16 @@
                         <span class="time-badge">19:00</span>
                         <h4 class="item-title">ארוחת ערב - La Ceaun</h4>
                         <p class="item-desc">ארוחת תבשילים עממית במדרחוב ברשוב.</p>
-                        <a href="https://maps.google.com/?q=La+Ceaun+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=La+Ceaun+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-2-5')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-2-5" class="info-drawer">
+                            <h5><i class="fa-solid fa-bowl-food"></i> מומלץ להזמין:</h5>
+                            <ul>
+                                <li>תבשילי קדירה בבישול איטי (Gulaș / Tocăniță) המוגשים בסיר פולקלוריסטי.</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?auto=format&fit=crop&w=500&q=80" alt="אוכל" class="item-img">
                 </div>
@@ -474,9 +841,13 @@
         </div>
 
         <!-- יום 3 -->
-        <div id="day-2" class="day-content">
+        <div id="day-3" class="day-content">
+            <div class="pro-tip-box">
+                <h4><i class="fa-solid fa-wand-magic-sparkles"></i> טיפ מעשי ליום 3</h4>
+                <p>ארמון פלש סגור לחלוטין בימי שני (ובחלק מימי שלישי). הקפידו לבדוק מראש. העלייה במגלשות ההרים בבושטני תלויה במזג האוויר – במידה ויורד גשם הפעילות מופסקת.</p>
+            </div>
             <div class="accommodation-info">
-                <div><strong><i class="fa-solid fa-hotel"></i> לינה:</strong> Brasov Holiday Apartments</div>
+                <div><strong><i class="fa-solid fa-hotel"></i> לינה (15/09 - 21/09):</strong> Brasov Holiday Apartments (Strada Egretei Nr. 3, Brașov)</div>
                 <a href="https://maps.google.com/?q=Strada+Egretei+3+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט ללינה</a>
             </div>
             <div class="timeline">
@@ -485,7 +856,18 @@
                         <span class="time-badge">09:30</span>
                         <h4 class="item-title">ארמון פלש (Peleș Castle)</h4>
                         <p class="item-desc">סיור בארמון המרהיב בסינאיה (חנייה: Parcare Castelul Peleș).</p>
-                        <a href="https://maps.google.com/?q=Peles+Castle" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Peles+Castle" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-3-1')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-3-1" class="info-drawer">
+                            <h5><i class="fa-solid fa-crown"></i> מה לראות בארמון:</h5>
+                            <ul>
+                                <li><strong>ארמון פלישור (Pelișor Castle):</strong> ארמון קטן ומרשים נוסף השוכן במרחק 2 דקות הליכה מעל ארמון פלש.</li>
+                                <li><strong>הגנים והמזרקות:</strong> שטיח הגנים החיצוני מציע תצפית מופלאה לצילומים משפחתיים.</li>
+                                <li><strong>טיפ:</strong> הסיור הפנימי דורש כיסויי נעליים (מצופים) המחולקים בכניסה.</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=500&q=80" alt="ארמון פלש" class="item-img">
                 </div>
@@ -494,7 +876,16 @@
                         <span class="time-badge">12:30</span>
                         <h4 class="item-title">ארוחת צהריים - Cuca Măcăi</h4>
                         <p class="item-desc">ארוחה עממית בסינאיה.</p>
-                        <a href="https://maps.google.com/?q=Cuca+Macai+Sinaia" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Cuca+Macai+Sinaia" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-3-2')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-3-2" class="info-drawer">
+                            <h5><i class="fa-solid fa-utensils"></i> דגשים:</h5>
+                            <ul>
+                                <li>מסעדה כפרית ואווירתית, מצוינת להפסקת צהריים קלה לפני המעבר לאקסטרים בבושטני.</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=500&q=80" alt="ארוחת צהריים" class="item-img">
                 </div>
@@ -503,16 +894,35 @@
                         <span class="time-badge">14:00</span>
                         <h4 class="item-title">מגלשות הרים בבושטני ופארק דימיטרי גיקה</h4>
                         <p class="item-desc">גלישה במגלשות הרים בבושטני (Kalinderu) וסיבוב בפארק דימיטרי גיקה בסינאיה.</p>
-                        <a href="https://maps.google.com/?q=Dimitrie+Ghica+Park+Sinaia" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Dimitrie+Ghica+Park+Sinaia" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-3-3')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-3-3" class="info-drawer">
+                            <h5><i class="fa-solid fa-person-skiing-nordic"></i> מה לעשות במתחם:</h5>
+                            <ul>
+                                <li><strong>מגלשות Kalinderu:</strong> מסלול מגלשות הרים אלפיניות מהיר ומהנה (ניתן לשלוט במהירות באמצעות בלם יד).</li>
+                                <li><strong>פארק דימיטרי גיקה:</strong> פארק ירוק ויפהפה בסינאיה עם מתקני שעשועים לילדים ובית הקזינו ההיסטורי.</li>
+                            </ul>
+                        </div>
                     </div>
-                    <img src="https://images.unsplash.com/photo-1519659528531-75775874e208?auto=format&fit=crop&w=500&q=80" alt="פארק" class="item-img">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=500&q=80" alt="פארק וטבע" class="item-img">
                 </div>
                 <div class="timeline-item">
                     <div class="item-details">
                         <span class="time-badge">18:30</span>
                         <h4 class="item-title">ארוחת ערב - Taverna Sârbului</h4>
                         <p class="item-desc">מנות בשר ענקיות ועממיות בסינאיה.</p>
-                        <a href="https://maps.google.com/?q=Taverna+Sarbului+Sinaia" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Taverna+Sarbului+Sinaia" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-3-4')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-3-4" class="info-drawer">
+                            <h5><i class="fa-solid fa-drumstick-bite"></i> טיפ להזמנה:</h5>
+                            <ul>
+                                <li>המנות מוגשות בגודל נדיב במיוחד! מומלץ להזמין פלטת בשרים משותפת למרכז השולחן.</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=500&q=80" alt="בשרים" class="item-img">
                 </div>
@@ -520,9 +930,13 @@
         </div>
 
         <!-- יום 4 -->
-        <div id="day-3" class="day-content">
+        <div id="day-4" class="day-content">
+            <div class="pro-tip-box">
+                <h4><i class="fa-solid fa-wand-magic-sparkles"></i> טיפ מעשי ליום 4</h4>
+                <p>באזור אגם סנט אנה יש הקפדה יתרה על איסור האכלת דובים (אזור מיוער צפוף). הצטיידו בבגדים חמים גם בקיץ, והכינו מעט מזומן מראש עבור חנייה והשכרת סירות.</p>
+            </div>
             <div class="accommodation-info">
-                <div><strong><i class="fa-solid fa-hotel"></i> לינה:</strong> Brasov Holiday Apartments</div>
+                <div><strong><i class="fa-solid fa-hotel"></i> לינה (15/09 - 21/09):</strong> Brasov Holiday Apartments (Strada Egretei Nr. 3, Brașov)</div>
                 <a href="https://maps.google.com/?q=Strada+Egretei+3+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט ללינה</a>
             </div>
             <div class="timeline">
@@ -531,7 +945,17 @@
                         <span class="time-badge">09:30</span>
                         <h4 class="item-title">נסיעה לאגם סנט אנה (Lacul Sfânta Ana)</h4>
                         <p class="item-desc">יציאה צפונה לאזור אגם סנט אנה (חנייה: Parcare Lacul Sfânta Ana).</p>
-                        <a href="https://maps.google.com/?q=Sfanta+Ana+Lake" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Sfanta+Ana+Lake" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-4-1')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-4-1" class="info-drawer">
+                            <h5><i class="fa-solid fa-tree"></i> מידע על האגם:</h5>
+                            <ul>
+                                <li>זהו אגם הלוע הגעשי היחיד ברומניה, המוקף יערות צפופים.</li>
+                                <li><strong>שאטל מהחניון:</strong> מהחניון העליון אל האגם ישנה הליכה במורד (או שאטל קטן בתשלום למי שמתקשה).</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=500&q=80" alt="אגם" class="item-img">
                 </div>
@@ -540,7 +964,17 @@
                         <span class="time-badge">11:30</span>
                         <h4 class="item-title">הליכה ושייט בסירות פדלים</h4>
                         <p class="item-desc">מסלול הליכה טבע קליל ומישורי סביב האגם ושייט בסירות.</p>
-                        <a href="https://maps.google.com/?q=Sfanta+Ana+Lake" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Sfanta+Ana+Lake" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-4-2')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-4-2" class="info-drawer">
+                            <h5><i class="fa-solid fa-ship"></i> פעילויות נוספות באזור:</h5>
+                            <ul>
+                                <li><strong>שייט בסירה:</strong> ניתן לשכור סירות משפחתיות לפי שעה על שפת האגם.</li>
+                                <li><strong>שמורת Tinovul Mohos:</strong> ביצה כבולית ייחודית בקרבת מקום עם מסלול גשרי עץ (סיור מודרך יוצא מדי שעה).</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=500&q=80" alt="סירת פדלים" class="item-img">
                 </div>
@@ -549,7 +983,16 @@
                         <span class="time-badge">13:30</span>
                         <h4 class="item-title">ארוחת צהריים - Hanul Hotarul</h4>
                         <p class="item-desc">ארוחת צהריים כפרית פשוטה ב-Restaurant Hanul Hotarul.</p>
-                        <a href="https://maps.google.com/?q=Hanul+Hotarul" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Hanul+Hotarul" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-4-3')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-4-3" class="info-drawer">
+                            <h5><i class="fa-solid fa-utensils"></i> מומלץ:</h5>
+                            <ul>
+                                <li>פונדק הדרכים מציע מרקים חמים מעולים וקינוחי פאפאנש (Papanași) טריים.</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=500&q=80" alt="מסעדה כפרית" class="item-img">
                 </div>
@@ -558,7 +1001,16 @@
                         <span class="time-badge">19:00</span>
                         <h4 class="item-title">ארוחת ערב - Roata Norocului</h4>
                         <p class="item-desc">ארוחת ערב בפונדק עממי ומקומי בברשוב.</p>
-                        <a href="https://maps.google.com/?q=Roata+Norocului+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Roata+Norocului+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-4-4')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-4-4" class="info-drawer">
+                            <h5><i class="fa-solid fa-wine-glass"></i> אווירה:</h5>
+                            <ul>
+                                <li>מסעדה ביתית ואותנטית מאוד הידועה בתבשילים מסורתיים ומחירים נוחים.</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=500&q=80" alt="מסעדה" class="item-img">
                 </div>
@@ -566,9 +1018,13 @@
         </div>
 
         <!-- יום 5 -->
-        <div id="day-4" class="day-content">
+        <div id="day-5" class="day-content">
+            <div class="pro-tip-box">
+                <h4><i class="fa-solid fa-wand-magic-sparkles"></i> טיפ מעשי ליום 5</h4>
+                <p>בפארק החבלים (Parc Aventura) יש להגיע עם נעלי ספורט סגורות בלבד. הרכבל להר טמפה חוסך ענייני חנייה אם משאירים את הרכב במגרש התחתון המסודר.</p>
+            </div>
             <div class="accommodation-info">
-                <div><strong><i class="fa-solid fa-hotel"></i> לינה:</strong> Brasov Holiday Apartments</div>
+                <div><strong><i class="fa-solid fa-hotel"></i> לינה (15/09 - 21/09):</strong> Brasov Holiday Apartments (Strada Egretei Nr. 3, Brașov)</div>
                 <a href="https://maps.google.com/?q=Strada+Egretei+3+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט ללינה</a>
             </div>
             <div class="timeline">
@@ -577,7 +1033,17 @@
                         <span class="time-badge">10:00</span>
                         <h4 class="item-title">Parc Aventura Brașov</h4>
                         <p class="item-desc">פעילות אתגרית בפארק החבלים (חנייה: Parcare Lacul Noua).</p>
-                        <a href="https://maps.google.com/?q=Parc+Aventura+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Parc+Aventura+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-5-1')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-5-1" class="info-drawer">
+                            <h5><i class="fa-solid fa-person-hiking"></i> דרגות קושי ואגם נואה:</h5>
+                            <ul>
+                                <li><strong>מסלולים לפי גילאים:</strong> בפארק יש רמות קושי החל מסגול/צהוב (לילדים קטנים) ועד שחור למבוגרים.</li>
+                                <li><strong>אגם נואה (Lacul Noua):</strong> צמוד לפארק החבלים – מקום מקסים להליכה סביב האגם או השכרת סירת פדלים נוספת.</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=500&q=80" alt="פארק חבלים" class="item-img">
                 </div>
@@ -586,7 +1052,16 @@
                         <span class="time-badge">13:30</span>
                         <h4 class="item-title">ארוחת צהריים - Casa Românească</h4>
                         <p class="item-desc">ארוחה עממית ב-Casa Românească בברשוב.</p>
-                        <a href="https://maps.google.com/?q=Casa+Romaneasca+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Casa+Romaneasca+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-5-2')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-5-2" class="info-drawer">
+                            <h5><i class="fa-solid fa-utensils"></i> המלצה:</h5>
+                            <ul>
+                                <li>ממוקמת ליד שער קטרינה, מציעה חצר פנימית נעימה ואוכל ביתי מעולה.</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=500&q=80" alt="אוכל" class="item-img">
                 </div>
@@ -595,7 +1070,17 @@
                         <span class="time-badge">15:30</span>
                         <h4 class="item-title">עלייה ברכבל להר טמפה (Tâmpa)</h4>
                         <p class="item-desc">תצפית מרהיבה והשלט האייקוני (חנייה: Parcare Telecabina Tâmpa).</p>
-                        <a href="https://maps.google.com/?q=Telecabina+Tampa+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Telecabina+Tampa+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-5-3')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-5-3" class="info-drawer">
+                            <h5><i class="fa-solid fa-mountain"></i> מה לעשות בפסגה:</h5>
+                            <ul>
+                                <li><strong>מרפסת התצפית:</strong> הליכה קצרה ומישורית של 5 דקות מהרכבל מביאה אותה ממש מתחת לשלט הלבן ענק "BRASOV".</li>
+                                <li><strong>תצפית פנורמית:</strong> מבט מרהיב על כל העיר העתיקה והגגות האדומים.</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=500&q=80" alt="הר טמפה" class="item-img">
                 </div>
@@ -604,7 +1089,16 @@
                         <span class="time-badge">19:00</span>
                         <h4 class="item-title">ארוחת ערב - Trattoria Del Chianti</h4>
                         <p class="item-desc">פיצרייה מקומית ואיטלקית רגועה לבנות.</p>
-                        <a href="https://maps.google.com/?q=Trattoria+Del+Chianti+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Trattoria+Del+Chianti+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-5-4')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-5-4" class="info-drawer">
+                            <h5><i class="fa-solid fa-pizza-slice"></i> מיועד למשפחות:</h5>
+                            <ul>
+                                <li>גוון מעולה מול האוכל המקומי - פיצות בתנור עצים, פסטות מעולות וקינוחים איטלקיים.</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=500&q=80" alt="פיצה" class="item-img">
                 </div>
@@ -612,9 +1106,13 @@
         </div>
 
         <!-- יום 6 -->
-        <div id="day-5" class="day-content">
+        <div id="day-6" class="day-content">
+            <div class="pro-tip-box">
+                <h4><i class="fa-solid fa-wand-magic-sparkles"></i> טיפ מעשי ליום 6</h4>
+                <p>כביש הטרנספגראשן פתוח בדרך כלל בין יוני לאוקטובר בלבד. תדלקו את הרכב עד הסוף בברשוב מפני שאין תחנות דלק בראש ההר. הקליטה בפסגה חלשה מאוד.</p>
+            </div>
             <div class="accommodation-info">
-                <div><strong><i class="fa-solid fa-hotel"></i> לינה:</strong> Ungefug A-Frame Sighisoara (Cartier Angofa, Sighişoara)</div>
+                <div><strong><i class="fa-solid fa-hotel"></i> לינה (21/09 - 25/09):</strong> Ungefug A-Frame Sighisoara (Cartier Angofa, 545400 Sighişoara, Romania)</div>
                 <a href="https://maps.google.com/?q=Cartier+Angofa+Sighisoara" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט ללינה</a>
             </div>
             <div class="timeline">
@@ -623,7 +1121,17 @@
                         <span class="time-badge">08:30</span>
                         <h4 class="item-title">כביש הטרנספגראשן (Transfăgărășan)</h4>
                         <p class="item-desc">יציאה מברשוב ועלייה לכביש הטרנספגראשן המפורסם.</p>
-                        <a href="https://maps.google.com/?q=Transfagarasan" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Transfagarasan" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-6-1')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-6-1" class="info-drawer">
+                            <h5><i class="fa-solid fa-route"></i> נקודות עצירה לאורך הדרך:</h5>
+                            <ul>
+                                <li><strong>מפלי באליאה (Cascada Bâlea):</strong> תצפית עצירה קצרה על המפל המפואר לפני הפסגה.</li>
+                                <li><strong>מפרצי עצירה לצילום:</strong> עצרו בבטחה במפרצים המיועדים כדי לצלם את מפותלי הכביש המרהיבים.</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=500&q=80" alt="טרנספגראשן" class="item-img">
                 </div>
@@ -632,7 +1140,17 @@
                         <span class="time-badge">12:30</span>
                         <h4 class="item-title">אגם באליאה (Bâlea Lac)</h4>
                         <p class="item-desc">עצירה באגם וארוחת צהריים עממית ב-Cabana Bâlea Lac (חנייה: Parcare Bâlea Lac).</p>
-                        <a href="https://maps.google.com/?q=Balea+Lac" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Balea+Lac" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-6-2')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-6-2" class="info-drawer">
+                            <h5><i class="fa-solid fa-water"></i> מה לעשות בפסגה:</h5>
+                            <ul>
+                                <li><strong>דוכני שוק בפסגה:</strong> טעמו גבינות מעושנות מקומיות, נקניקי ציד וקורטוש קאלאץ'.</li>
+                                <li><strong>סיבוב סביב האגם האלפיני:</strong> מסלול הליכה קצר ומהמם סביב האגם הקרחוני.</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=500&q=80" alt="אגם באליאה" class="item-img">
                 </div>
@@ -640,8 +1158,17 @@
                     <div class="item-details">
                         <span class="time-badge">16:00</span>
                         <h4 class="item-title">צ'ק-אין בסגישוארה</h4>
-                        <p class="item-desc">הגעה לבית העץ Ungefug A-Frame בסגישוארה, צ'ק-אין והתארגנות.</p>
-                        <a href="https://maps.google.com/?q=Cartier+Angofa+Sighisoara" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <p class="item-desc">הגעה לבית העץ Ungefug A-Frame בסגישוארה (Cartier Angofa), צ'ק-אין והתארגנות.</p>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Cartier+Angofa+Sighisoara" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-6-3')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-6-3" class="info-drawer">
+                            <h5><i class="fa-solid fa-campground"></i> חוויית הלינה:</h5>
+                            <ul>
+                                <li>בית העץ ממוקם בטבע פסטורלי - מומלץ ליהנות מהשקיעה בחצר והשקט של כפרי טרנסילבניה.</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=500&q=80" alt="בית עץ" class="item-img">
                 </div>
@@ -650,7 +1177,16 @@
                         <span class="time-badge">19:00</span>
                         <h4 class="item-title">ארוחת ערב - Casa Vlad Dracul</h4>
                         <p class="item-desc">ארוחה במרכז העתיק בבית דרקולה בסגישוארה.</p>
-                        <a href="https://maps.google.com/?q=Casa+Vlad+Dracul+Sighisoara" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Casa+Vlad+Dracul+Sighisoara" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-6-4')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-6-4" class="info-drawer">
+                            <h5><i class="fa-solid fa-ghost"></i> חוויה לילדים:</h5>
+                            <ul>
+                                <li>הבית שבו נולד ולאד המשפד (דרקולה) – ישנה אטרקציה קטנה של חדר דרקולה בקומה העליונה.</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=500&q=80" alt="מסעדה" class="item-img">
                 </div>
@@ -658,9 +1194,13 @@
         </div>
 
         <!-- יום 7 -->
-        <div id="day-6" class="day-content">
+        <div id="day-7" class="day-content">
+            <div class="pro-tip-box">
+                <h4><i class="fa-solid fa-wand-magic-sparkles"></i> טיפ מעשי ליום 7</h4>
+                <p>במצודת סגישוארה הכניסה לרכב מורשית לתושבים בלבד. החנו את הרכב בחניון במעלה העיר התחתית ועלו ברגל (המדרגות המקורות נוחות ומוצלות).</p>
+            </div>
             <div class="accommodation-info">
-                <div><strong><i class="fa-solid fa-hotel"></i> לינה:</strong> Ungefug A-Frame Sighisoara</div>
+                <div><strong><i class="fa-solid fa-hotel"></i> לינה (21/09 - 25/09):</strong> Ungefug A-Frame Sighisoara (Cartier Angofa, Sighişoara)</div>
                 <a href="https://maps.google.com/?q=Cartier+Angofa+Sighisoara" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט ללינה</a>
             </div>
             <div class="timeline">
@@ -669,7 +1209,17 @@
                         <span class="time-badge">10:00</span>
                         <h4 class="item-title">מצודת סגישוארה ומגדל השעון</h4>
                         <p class="item-desc">סיור רגלי במצודה העתיקה ועלייה למגדל השעון.</p>
-                        <a href="https://maps.google.com/?q=Sighisoara+Clock+Tower" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Sighisoara+Clock+Tower" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-7-1')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-7-1" class="info-drawer">
+                            <h5><i class="fa-solid fa-clock"></i> מה לראות במגדל:</h5>
+                            <ul>
+                                <li><strong>מנגנון בובות העץ:</strong> מנגנון השעון מזיז בובות עץ מיוחדות בכל שעה עגולה.</li>
+                                <li><strong>תצפית מהמרפסת:</strong> מרפסת העץ של המגדל מציעה תצפית פנורמית 360 מעלות על העיר.</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1584646098378-0874589d76b1?auto=format&fit=crop&w=500&q=80" alt="סגישוארה" class="item-img">
                 </div>
@@ -678,7 +1228,16 @@
                         <span class="time-badge">13:00</span>
                         <h4 class="item-title">ארוחת צהריים - Medieval Café</h4>
                         <p class="item-desc">ארוחה פשוטה וטעימה ב-Medieval Café Restaurant.</p>
-                        <a href="https://maps.google.com/?q=Medieval+Cafe+Restaurant+Sighisoara" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Medieval+Cafe+Restaurant+Sighisoara" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-7-2')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-7-2" class="info-drawer">
+                            <h5><i class="fa-solid fa-mug-hot"></i> אווירה:</h5>
+                            <ul>
+                                <li>בית קפה/מסעדה קסום בסגנון ימי הביניים בלב המצודה.</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=500&q=80" alt="מסעדה" class="item-img">
                 </div>
@@ -687,7 +1246,16 @@
                         <span class="time-badge">15:00</span>
                         <h4 class="item-title">מדרגות התלמידים המקורות (Covered Stairway)</h4>
                         <p class="item-desc">עלייה במדרגות (הליכה קלה ומוצלת) וסיור בין הבתים הצבעוניים.</p>
-                        <a href="https://maps.google.com/?q=Covered+Stairway+Sighisoara" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Covered+Stairway+Sighisoara" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-7-3')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-7-3" class="info-drawer">
+                            <h5><i class="fa-solid fa-stairs"></i> מה מחכה למעלה:</h5>
+                            <ul>
+                                <li>גרם של 175 מדרגות עץ מקורות המוביל לכנסייה שעל הגבעה (Biserica din Deal) ולבית העלמין העתיק והפסטורלי.</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1513581166391-887a96ddeafd?auto=format&fit=crop&w=500&q=80" alt="רחוב צבעוני" class="item-img">
                 </div>
@@ -696,7 +1264,16 @@
                         <span class="time-badge">18:30</span>
                         <h4 class="item-title">ארוחת ערב - La Taz</h4>
                         <p class="item-desc">ארוחת ערב עממית ב-La Taz בסגישוארה.</p>
-                        <a href="https://maps.google.com/?q=La+Taz+Sighisoara" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=La+Taz+Sighisoara" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-7-4')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-7-4" class="info-drawer">
+                            <h5><i class="fa-solid fa-burger"></i> אוכל רחוב ומסעדה:</h5>
+                            <ul>
+                                <li>מציעה בורגרים מעולים, בשרים על האש ואווירה צעירה.</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=500&q=80" alt="אוכל" class="item-img">
                 </div>
@@ -704,9 +1281,13 @@
         </div>
 
         <!-- יום 8 -->
-        <div id="day-7" class="day-content">
+        <div id="day-8" class="day-content">
+            <div class="pro-tip-box">
+                <h4><i class="fa-solid fa-wand-magic-sparkles"></i> טיפ מעשי ליום 8</h4>
+                <p>במוזיאון הכפר הפתוח ASTRA יש מסלול הליכה רחב המתאים לעגלות. מומלץ לשכור כרכרה או אופניים משפחתיים במידה והילדים התעייפו.</p>
+            </div>
             <div class="accommodation-info">
-                <div><strong><i class="fa-solid fa-hotel"></i> לינה:</strong> Ungefug A-Frame Sighisoara</div>
+                <div><strong><i class="fa-solid fa-hotel"></i> לינה (21/09 - 25/09):</strong> Ungefug A-Frame Sighisoara (Cartier Angofa, Sighişoara)</div>
                 <a href="https://maps.google.com/?q=Cartier+Angofa+Sighisoara" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט ללינה</a>
             </div>
             <div class="timeline">
@@ -715,7 +1296,17 @@
                         <span class="time-badge">10:30</span>
                         <h4 class="item-title">סיור בעיר העתיקה בסיביו (Sibiu)</h4>
                         <p class="item-desc">הכיכר הגדולה, גשר השקרים והבתים עם "העיניים" (חנייה: Parcare Cazarma 90).</p>
-                        <a href="https://maps.google.com/?q=Piata+Mare+Sibiu" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Piata+Mare+Sibiu" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-8-1')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-8-1" class="info-drawer">
+                            <h5><i class="fa-solid fa-eye"></i> דגשים בסיביו:</h5>
+                            <ul>
+                                <li><strong>הבתים עם העיניים:</strong> הביטו אל גגות הבתים בכיכר הגדולה ובכיכר הקטנה – חלונות הגג נראים בדיוק כמו עיניים שמביטות בכם!</li>
+                                <li><strong>גשר השקרים (Podul Minciunilor):</strong> לפי האגדה, הליכה על הגשר תוך אמירת שקר תגרום לו לרעוד ולחרוק.</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1584646098378-0874589d76b1?auto=format&fit=crop&w=500&q=80" alt="סיביו" class="item-img">
                 </div>
@@ -724,25 +1315,54 @@
                         <span class="time-badge">13:00</span>
                         <h4 class="item-title">ארוחת צהריים - Crama Sibiul Vechi</h4>
                         <p class="item-desc">ארוחה עממית במרתף המסורתי בסיביו.</p>
-                        <a href="https://maps.google.com/?q=Crama+Sibiul+Vechi+Sibiu" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Crama+Sibiul+Vechi+Sibiu" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-8-2')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-8-2" class="info-drawer">
+                            <h5><i class="fa-solid fa-utensils"></i> מומלץ לאכול:</h5>
+                            <ul>
+                                <li>מקום אותנטי במרתף אבן קסום, מציע מרק צ'ורבה בתוך קערת לחם נכבדת.</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=500&q=80" alt="מרתף" class="item-img">
                 </div>
                 <div class="timeline-item">
                     <div class="item-details">
                         <span class="time-badge">15:00</span>
-                        <h4 class="item-title">מוזיאון הכפר הפתוח ASTRA</h4>
-                        <p class="item-desc">הליכה רגלית מישורית בטבע (חנייה: Parcare Muzeul ASTRA).</p>
-                        <a href="https://maps.google.com/?q=ASTRA+Museum+Sibiu" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <h4 class="item-title">מוזיאון הכפר הפתוח ASTRA (Muzeul ASTRA)</h4>
+                        <p class="item-desc">מוזיאון פתוח ענקי השוכן בתוך פארק ירוק מסביב לאגם פסטורלי. המתחם מציג מעל 300 מבנים כפריים מקוריים מכל רחבי רומניה (טחנות רוח, טחנות מים, בתי עץ מסורתיים ובתי מלאכה). מקום מושלם להליכה רגלית מישורית בטבע עם הילדים, השכרת אופניים או שייט בסירות (חנייה: Parcare Muzeul ASTRA).</p>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=ASTRA+Museum+Sibiu" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-8-3')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-8-3" class="info-drawer">
+                            <h5><i class="fa-solid fa-ferris-wheel"></i> פעילויות במוזיאון:</h5>
+                            <ul>
+                                <li><strong>שייט בסירה באגם:</strong> השכרת סירות פדלים במרכז האגם.</li>
+                                <li><strong>כרכרות סוסים:</strong> סיור בכרכרת סוסים מסורתית ברחבי המוזיאון הפתוח.</li>
+                                <li><strong>סדנאות יצירה:</strong> בסופי שבוע מתקיימות סדנאות אמנות כפרית לילדים.</li>
+                            </ul>
+                        </div>
                     </div>
-                    <img src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=500&q=80" alt="מוזיאון הכפר" class="item-img">
+                    <img src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=500&q=80" alt="מוזיאון הכפר הפתוח ASTRA" class="item-img">
                 </div>
                 <div class="timeline-item">
                     <div class="item-details">
                         <span class="time-badge">19:00</span>
                         <h4 class="item-title">ארוחת ערב - Concordia</h4>
                         <p class="item-desc">ארוחה ב-Concordia בסגישוארה.</p>
-                        <a href="https://maps.google.com/?q=Concordia+Sighisoara" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Concordia+Sighisoara" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-8-4')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-8-4" class="info-drawer">
+                            <h5><i class="fa-solid fa-utensils"></i> דגשים:</h5>
+                            <ul>
+                                <li>מסעדה נוחה במכז העיר עם תפריט מגוון המתאים לכל המשפחה.</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=500&q=80" alt="מסעדה" class="item-img">
                 </div>
@@ -750,9 +1370,13 @@
         </div>
 
         <!-- יום 9 -->
-        <div id="day-8" class="day-content">
+        <div id="day-9" class="day-content">
+            <div class="pro-tip-box">
+                <h4><i class="fa-solid fa-wand-magic-sparkles"></i> טיפ מעשי ליום 9</h4>
+                <p>בכפר ויסקרי (Viscri) הדרכים אינן סלולות היטב (אבנים ועפר) - מומלץ להגיע בנעלי הליכה נוחות ולהחזיק מזומן בלבד למסעדות ולחנויות הקטנות בכפר.</p>
+            </div>
             <div class="accommodation-info">
-                <div><strong><i class="fa-solid fa-hotel"></i> לינה:</strong> Ungefug A-Frame Sighisoara</div>
+                <div><strong><i class="fa-solid fa-hotel"></i> לינה (21/09 - 25/09):</strong> Ungefug A-Frame Sighisoara (Cartier Angofa, Sighişoara)</div>
                 <a href="https://maps.google.com/?q=Cartier+Angofa+Sighisoara" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט ללינה</a>
             </div>
             <div class="timeline">
@@ -760,8 +1384,18 @@
                     <div class="item-details">
                         <span class="time-badge">10:00</span>
                         <h4 class="item-title">הכפר ויסקרי (Viscri)</h4>
-                        <p class="item-desc">ביקור בכפר הציורי ובכנסייה המבוצרת (חנייה: Parcare Viscri).</p>
-                        <a href="https://maps.google.com/?q=Viscri+Fortified+Church" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <p class="item-desc">ביקור בכפר הציורי ובכנסייה المבוצרת (חנייה: Parcare Viscri).</p>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Viscri+Fortified+Church" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-9-1')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-9-1" class="info-drawer">
+                            <h5><i class="fa-solid fa-church"></i> מה לראות בויסקרי:</h5>
+                            <ul>
+                                <li><strong>הבית של המלך צ'ארלס:</strong> המלך צ'ארלס השלישי מחזיק בית מסורתי בכפר הפתוח לביקורי קהל.</li>
+                                <li><strong>הכנסייה המבוצרת (Viscri Fortified Church):</strong> טיפוס למגדל הכנסייה לתצפית על גגות הכפר והגבעות הירוקות.</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=500&q=80" alt="ויסקרי" class="item-img">
                 </div>
@@ -770,7 +1404,16 @@
                         <span class="time-badge">12:30</span>
                         <h4 class="item-title">ארוחת צהריים בכפר ויסקרי</h4>
                         <p class="item-desc">ארוחה ביתית ועממית באחד מבתי המארחים בכפר.</p>
-                        <a href="https://maps.google.com/?q=Viscri+Village" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Viscri+Village" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-9-2')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-9-2" class="info-drawer">
+                            <h5><i class="fa-solid fa-cookie-bite"></i> חוויה קולינרית:</h5>
+                            <ul>
+                                <li>טעמו את הלחם המקומי הנאפה בתנורי עצים ומאפים מסורתיים הנמכרים בחצרות הבתים.</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=500&q=80" alt="ארוחה ביתית" class="item-img">
                 </div>
@@ -779,7 +1422,16 @@
                         <span class="time-badge">15:00</span>
                         <h4 class="item-title">מצודת רופאה (Rupea Fortress)</h4>
                         <p class="item-desc">סיור במצודה (חנייה: Parcare Cetatea Rupea).</p>
-                        <a href="https://maps.google.com/?q=Rupea+Fortress" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Rupea+Fortress" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-9-3')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-9-3" class="info-drawer">
+                            <h5><i class="fa-solid fa-fort-awesome"></i> מה לראות במצודה:</h5>
+                            <ul>
+                                <li>מצודה בצורת ספירלה על ראש גבעה בזלתית. הליכה בין החומות, המגדלים והחצרות המשוחזרות.</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1599940824399-b87987ceb72a?auto=format&fit=crop&w=500&q=80" alt="מצודת רופאה" class="item-img">
                 </div>
@@ -788,7 +1440,16 @@
                         <span class="time-badge">19:00</span>
                         <h4 class="item-title">ארוחת ערב - Restaurant Transilvania</h4>
                         <p class="item-desc">ארוחת ערב בסגישוארה.</p>
-                        <a href="https://maps.google.com/?q=Restaurant+Transilvania+Sighisoara" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Restaurant+Transilvania+Sighisoara" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-9-4')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-9-4" class="info-drawer">
+                            <h5><i class="fa-solid fa-utensils"></i> אווירה:</h5>
+                            <ul>
+                                <li>מסעדה נעימה ומזמינה המציעה תפריט טרנסילבני עשיר.</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=500&q=80" alt="מסעדה" class="item-img">
                 </div>
@@ -796,9 +1457,13 @@
         </div>
 
         <!-- יום 10 -->
-        <div id="day-9" class="day-content">
+        <div id="day-10" class="day-content">
+            <div class="pro-tip-box">
+                <h4><i class="fa-solid fa-wand-magic-sparkles"></i> טיפ מעשי ליום 10</h4>
+                <p>הביקור בביארטן הוא טיול רגוע מאוד. מומלץ לנצל את שעות אחה"כ לחזרה נינוחה לאריזה ולהכנת הרכב לנסיעה הארוכה דרומה למחרת.</p>
+            </div>
             <div class="accommodation-info">
-                <div><strong><i class="fa-solid fa-hotel"></i> לינה:</strong> Ungefug A-Frame Sighisoara</div>
+                <div><strong><i class="fa-solid fa-hotel"></i> לינה (21/09 - 25/09):</strong> Ungefug A-Frame Sighisoara (Cartier Angofa, Sighişoara)</div>
                 <a href="https://maps.google.com/?q=Cartier+Angofa+Sighisoara" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט ללינה</a>
             </div>
             <div class="timeline">
@@ -807,7 +1472,17 @@
                         <span class="time-badge">10:00</span>
                         <h4 class="item-title">מצודת ביארטן (Biertan Fortified Church)</h4>
                         <p class="item-desc">טיול יום קצר ורגוע אל אחד הכפרים המבוצרים היפים בטרנסילבניה, במרחק נסיעה קצר בסגישוארה.</p>
-                        <a href="https://maps.google.com/?q=Biertan+Fortified+Church" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Biertan+Fortified+Church" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-10-1')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-10-1" class="info-drawer">
+                            <h5><i class="fa-solid fa-lock"></i> הסיפור המרתק של ביארטן:</h5>
+                            <ul>
+                                <li><strong>"חדר הגירושין":</strong> חפשו בכנסייה את החדר שבו נהגו לכלוא זוגות שביקשו להתגרש עם מיטה אחת, צלחת אחת ומזלג אחד למשך שבועיים!</li>
+                                <li><strong>דלת הקסמים:</strong> מנגנון הנעילה של דלת חדר האוצר בכנסייה כולל 19 מנעולים המופעלים על ידי מפתח יחיד.</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1599940824399-b87987ceb72a?auto=format&fit=crop&w=500&q=80" alt="ביארטן" class="item-img">
                 </div>
@@ -816,7 +1491,16 @@
                         <span class="time-badge">13:00</span>
                         <h4 class="item-title">ארוחת צהריים - Unglerus Biertan</h4>
                         <p class="item-desc">ארוחה עממית ומקומית בטרקלין המסורתי בביארטן.</p>
-                        <a href="https://maps.google.com/?q=Restaurant+Unglerus+Biertan" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Restaurant+Unglerus+Biertan" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-10-2')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-10-2" class="info-drawer">
+                            <h5><i class="fa-solid fa-chair"></i> אווירה:</h5>
+                            <ul>
+                                <li>מסעדה השוכנת בתוך מבנה עתיק משוחזר למרגלות הכנסייה.</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=500&q=80" alt="מסעדה" class="item-img">
                 </div>
@@ -825,7 +1509,16 @@
                         <span class="time-badge">15:30</span>
                         <h4 class="item-title">חזרה לסגישוארה וזמן חופשי</h4>
                         <p class="item-desc">חזרה לבית העץ, מנוחה, שייט רגוע או טיול בסמטאות המצודה לקראת סיום החלק בטרנסילבניה.</p>
-                        <a href="https://maps.google.com/?q=Sighisoara+Citadel" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Sighisoara+Citadel" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-10-3')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-10-3" class="info-drawer">
+                            <h5><i class="fa-solid fa-sun"></i> המלצות לזמן פנאי:</h5>
+                            <ul>
+                                <li>זמן מצוין לקניית מזכרות עבודת יד מקומיות בסמטאות העיר העתיקה.</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1584646098378-0874589d76b1?auto=format&fit=crop&w=500&q=80" alt="סגישוארה" class="item-img">
                 </div>
@@ -834,7 +1527,16 @@
                         <span class="time-badge">19:00</span>
                         <h4 class="item-title">ארוחת ערב אחרונה בסגישוארה</h4>
                         <p class="item-desc">ארוחה מסכמת והתארגנות לאריזה בבית העץ.</p>
-                        <a href="https://maps.google.com/?q=Sighisoara+Citadel" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Sighisoara+Citadel" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-10-4')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-10-4" class="info-drawer">
+                            <h5><i class="fa-solid fa-suitcase"></i> טיפ לאריזה:</h5>
+                            <ul>
+                                <li>ארזו תיק נפרד ליום המחרת כדי להקל על החזרת הרכב וההגעה לדירה בבוקרשט.</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=500&q=80" alt="ארוחת ערב" class="item-img">
                 </div>
@@ -842,38 +1544,356 @@
         </div>
 
         <!-- יום 11 -->
-        <div id="day-10" class="day-content">
+        <div id="day-11" class="day-content">
+            <div class="pro-tip-box">
+                <h4><i class="fa-solid fa-wand-magic-sparkles"></i> טיפ מעשי ליום 11</h4>
+                <p>החזרת רכב בשדה והגעה לבוקרשט: לאחר החזרת הרכב בשדה חנרי קואנדה, השתמשו באפליקציות **Bolt** או **Uber** כדי להגיע למלון בעיר. מוניות מזדמנות בשדה עלולות לגבות מחירים מופקעים.</p>
+            </div>
             <div class="accommodation-info">
-                <div><strong><i class="fa-solid fa-plane-arrival"></i> יום סיום:</strong> מעבר לשדה התעופה ולבוקרשט</div>
+                <div><strong><i class="fa-solid fa-hotel"></i> לינה (25/09 - 28/09):</strong> AIASTAY Bucharest River Apartments (2J Splaiul Independenței, Sector 3, 030099 Bucharest, Romania)</div>
+                <a href="https://maps.google.com/?q=2J+Splaiul+Independenței+Bucharest" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט ללינה</a>
             </div>
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="item-details">
                         <span class="time-badge">08:00</span>
-                        <h4 class="item-title">נסיעה לשדה התעופה</h4>
-                        <p class="item-desc">יציאה מוקדמת מסגישוארה דרומה לכיוון שדה התעופה בבוקרשט (כ-3.5-4 שעות נסיעה).</p>
-                        <a href="https://maps.google.com/?q=Henri+Coandă+International+Airport" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <h4 class="item-title">נסיעה לשדה התעופה / בוקרשט</h4>
+                        <p class="item-desc">יציאה מוקדמת מסגישוארה דרומה לכיוון בוקרשט (כ-3.5-4 שעות נסיעה).</p>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Henri+Coandă+International+Airport" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-11-1')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-11-1" class="info-drawer">
+                            <h5><i class="fa-solid fa-gas-pump"></i> עצירת רענון ותדלוק:</h5>
+                            <ul>
+                                <li>תדלקו את הרכב לפני ההגעה למתחם השדה כדי להימנע מעמלות תדלוק גבוהות של חברת ההשכרה.</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=500&q=80" alt="נסיעה" class="item-img">
                 </div>
                 <div class="timeline-item">
                     <div class="item-details">
                         <span class="time-badge">12:30</span>
-                        <h4 class="item-title">החזרת הרכב בשדה</h4>
-                        <p class="item-desc">החזרת הרכב השכור בשדה התעופה (Henri Coandă Airport - Car Rental Return Area).</p>
-                        <a href="https://maps.google.com/?q=Henri+Coandă+International+Airport+Car+Rental" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <h4 class="item-title">החזרת הרכב השכור</h4>
+                        <p class="item-desc">החזרת הרכב השכור במתחם השדה והורדת העומס מנהיגה בעיר הגדולה.</p>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Henri+Coandă+International+Airport+Car+Rental" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-11-2')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-11-2" class="info-drawer">
+                            <h5><i class="fa-solid fa-file-contract"></i> בדיקת החזרה:</h5>
+                            <ul>
+                                <li>ודאו נציג חברת ההשכרה חותם על טופס החזרה תקין (Check-in Form) ללא נזקים חדשים.</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1542296332-2e4473faf563?auto=format&fit=crop&w=500&q=80" alt="שדה תעופה" class="item-img">
                 </div>
                 <div class="timeline-item">
                     <div class="item-details">
-                        <span class="time-badge">13:15</span>
-                        <h4 class="item-title">מעבר לבוקרשט</h4>
-                        <p class="item-desc">לקיחת מונית / Uber ממתחם הטרמינל חזרה לתוך העיר בוקרשט.</p>
-                        <a href="https://maps.google.com/?q=Bucharest+Old+Town" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                        <span class="time-badge">14:00</span>
+                        <h4 class="item-title">צ'ק-אין בדירה בבוקרשט</h4>
+                        <p class="item-desc">הגעה ל-AIASTAY Bucharest River Apartments (Splaiul Independenței 2J), התרעננות ויציאה לסיבוב רגלי ראשון בעיר העתיקה.</p>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=2J+Splaiul+Independenței+Bucharest" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-11-3')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-11-3" class="info-drawer">
+                            <h5><i class="fa-solid fa-building-columns"></i> מוקדים בעיר העתיקה (Lipscani):</h5>
+                            <ul>
+                                <li><strong>חנות הספרים Cărturești Carusel:</strong> אחת מחנויות הספרים היפות באירופה - עיצוב לבן מרהיב המתפרש על 6 קומות!</li>
+                                <li><strong>מנזר סטאברופולאוס (Stavropoleos):</strong> חצר פנימית שקטה ופסטורלית בלב סמטאות העיר הסואנות.</li>
+                            </ul>
+                        </div>
                     </div>
                     <img src="https://images.unsplash.com/photo-1584646098378-0874589d76b1?auto=format&fit=crop&w=500&q=80" alt="בוקרשט" class="item-img">
                 </div>
+                <div class="timeline-item">
+                    <div class="item-details">
+                        <span class="time-badge">19:00</span>
+                        <h4 class="item-title">ארוחת ערב - Caru' cu Bere</h4>
+                        <p class="item-desc">חוויה קולינרית מדהימה במסעדה ההיסטורית והמפוארת בבוקרשט.</p>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Caru+cu+Bere" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-11-4')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-11-4" class="info-drawer">
+                            <h5><i class="fa-solid fa-beer-mug-empty"></i> חוויה שאסור לפספס:</h5>
+                            <ul>
+                                <li><strong>מופעי פולקלור:</strong> בשעות הערב מתקיימים במרכז המסעדה מופעי ריקוד ונגינה עממיים.</li>
+                                <li><strong>המנה האייקונית:</strong> ברך חזיר צלויה (Ciolan de porc) המוגשת עם כרוב כבוש.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=500&q=80" alt="מסעדה" class="item-img">
+                </div>
+            </div>
+        </div>
+
+        <!-- יום 12 -->
+        <div id="day-12" class="day-content">
+            <div class="pro-tip-box">
+                <h4><i class="fa-solid fa-wand-magic-sparkles"></i> טיפ מעשי ליום 12</h4>
+                <p>חובה להזמין כרטיסים לפארק המים **Therme Bucharest** מראש באינטרנט (מתחם Galaxy מותאם במיוחד למשפחות עם ילדים). הביאו עמכם כפכפים ומגבות מהמלון כדי לחסוך עלויות השכרה במקום.</p>
+            </div>
+            <div class="accommodation-info">
+                <div><strong><i class="fa-solid fa-hotel"></i> לינה (25/09 - 28/09):</strong> AIASTAY Bucharest River Apartments (Splaiul Independenței 2J, Bucharest)</div>
+                <a href="https://maps.google.com/?q=2J+Splaiul+Independenței+Bucharest" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט ללינה</a>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="item-details">
+                        <span class="time-badge">10:00</span>
+                        <h4 class="item-title">פארק המים Therme Bucharest</h4>
+                        <p class="item-desc">בילוי יום שלם במתחם הבלנאולוגי ופארק המים המקורה הגדול באירופה (אזור Galaxy).</p>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Therme+Bucuresti" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-12-1')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-12-1" class="info-drawer">
+                            <h5><i class="fa-solid fa-water-ladder"></i> אזורים מומלצים בפארק:</h5>
+                            <ul>
+                                <li><strong>מתחם Galaxy:</strong> אזור הילדים הכולל מעל 16 מגלשות מים אקסטרים, בריכת גלים ומעברי מים.</li>
+                                <li><strong>מתחם The Palm:</strong> בריכה טרמית ענקית עם עצי דקל טבעיים ובר מים קוקטיילים (מתאים לרגיעה).</li>
+                                <li><strong>ציוד נדרש:</strong> כפכפי גומי, בגדי ים ומגבות (ניתן לשכור בכניסה במידת הצורך).</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1582650625119-3a31f8fa2699?auto=format&fit=crop&w=500&q=80" alt="תרמה בוקרשט" class="item-img">
+                </div>
+                <div class="timeline-item">
+                    <div class="item-details">
+                        <span class="time-badge">17:00</span>
+                        <h4 class="item-title">חזרה לדירה והתרעננות</h4>
+                        <p class="item-desc">חזרה במונית / Bolt למרכז העיר ומנוחה קלה.</p>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=2J+Splaiul+Independenței+Bucharest" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-12-2')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-12-2" class="info-drawer">
+                            <h5><i class="fa-solid fa-car"></i> תחבורה:</h5>
+                            <ul>
+                                <li>הזמינו Bolt ישירות ביציאה מהמתחם – זמין ונוח מאוד.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=500&q=80" alt="מלון" class="item-img">
+                </div>
+                <div class="timeline-item">
+                    <div class="item-details">
+                        <span class="time-badge">19:30</span>
+                        <h4 class="item-title">ארוחת ערב - Hanu' lui Manuc</h4>
+                        <p class="item-desc">ארוחה בחצר הפנימית המרהיבה של הפונדק העתיק ביותר בבוקרשט.</p>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Hanu+lui+Manuc" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-12-3')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-12-3" class="info-drawer">
+                            <h5><i class="fa-solid fa-archway"></i> היסטוריה ואווירה:</h5>
+                            <ul>
+                                <li>הפונדק הפעיל היחיד שנותר בסגנון "חאן" עות'מאני בבוקרשט. החצר הפנימית מוצלת וקסומה.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=500&q=80" alt="מסעדה" class="item-img">
+                </div>
+            </div>
+        </div>
+
+        <!-- יום 13 -->
+        <div id="day-13" class="day-content">
+            <div class="pro-tip-box">
+                <h4><i class="fa-solid fa-wand-magic-sparkles"></i> טיפ מעשי ליום 13</h4>
+                <p>בקניון AFI Cotroceni יש מתחם החלקה על הקרח ופארק חבלים מקורה. אם הילדים רוצים לשוט באגם הרסטראו, מומלץ לשכור סירת פדלים או לקחת את מעבורת האגם המרכזית.</p>
+            </div>
+            <div class="accommodation-info">
+                <div><strong><i class="fa-solid fa-hotel"></i> לינה (25/09 - 28/09):</strong> AIASTAY Bucharest River Apartments (Splaiul Independenței 2J, Bucharest)</div>
+                <a href="https://maps.google.com/?q=2J+Splaiul+Independenței+Bucharest" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט ללינה</a>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="item-details">
+                        <span class="time-badge">10:00</span>
+                        <h4 class="item-title">פארק הרסטראו (King Michael I Park) ושער הניצחון</h4>
+                        <p class="item-desc">טיול בוקר רגוע בפארק הירוק, שייט באגם וצפייה בשער הניצחון של בוקרשט.</p>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=King+Michael+I+Park+Bucharest" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-13-1')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-13-1" class="info-drawer">
+                            <h5><i class="fa-solid fa-tree"></i> אטרקציות בפארק:</h5>
+                            <ul>
+                                <li><strong>שייט במעבורת אגם:</strong> שייט קבוצתי קצר ומהנה במעבורת החוצה את אגם הרסטראו.</li>
+                                <li><strong>שער הניצחון (Arcul de Triumf):</strong> ממוקם ממש ביציאה מהפארק – העתק מרשים של שער הניצחון בפריז.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=500&q=80" alt="פארק" class="item-img">
+                </div>
+                <div class="timeline-item">
+                    <div class="item-details">
+                        <span class="time-badge">13:30</span>
+                        <h4 class="item-title">ארוחת צהריים - Hard Rock Cafe Bucharest</h4>
+                        <p class="item-desc">ארוחה כיפית למשפחה ישר על שפת האגם בפארק.</p>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Hard+Rock+Cafe+Bucharest" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-13-2')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-13-2" class="info-drawer">
+                            <h5><i class="fa-solid fa-guitar"></i> מועדף על ילדים:</h5>
+                            <ul>
+                                <li>אווירה תוססת, המבורגרים מצוינים, פריטי רוק היסטוריים ואזור ישיבה נעים לצד האגם.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=500&q=80" alt="מסעדה" class="item-img">
+                </div>
+                <div class="timeline-item">
+                    <div class="item-details">
+                        <span class="time-badge">15:30</span>
+                        <h4 class="item-title">קניות ובילוי ב-AFI Cotroceni</h4>
+                        <p class="item-desc">זמן קניות, החלקה על הקרח או משחקים בקניון הגדול בבוקרשט.</p>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=AFI+Cotroceni" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-13-3')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-13-3" class="info-drawer">
+                            <h5><i class="fa-solid fa-cart-shopping"></i> מה לעשות בקניון:</h5>
+                            <ul>
+                                <li><strong>משטח החלקה על הקרח:</strong> משטח ענק במרכז הקניון.</li>
+                                <li><strong>פארק חבלים מקורה ורכבת הרים:</strong> מתחם אקסטרים מקורה ומרהיב לילדים.</li>
+                                <li><strong>מותגים ושופינג:</strong> חנויות מותגים בינלאומיות במחירים נוחים.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?auto=format&fit=crop&w=500&q=80" alt="קניון" class="item-img">
+                </div>
+                <div class="timeline-item">
+                    <div class="item-details">
+                        <span class="time-badge">19:30</span>
+                        <h4 class="item-title">ארוחת ערב - Cișmigiu - Bistro la Altitudine</h4>
+                        <p class="item-desc">ארוחת ערב ססגונית עם תצפית מרהיבה על העיר.</p>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Cismigiu+Bistro+la+Altitudine" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-13-4')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-13-4" class="info-drawer">
+                            <h5><i class="fa-solid fa-champagne-glasses"></i> תצפית ואווירה:</h5>
+                            <ul>
+                                <li>מסעדת גג (Rooftop) מעוצבת בגווני ורוד בסגנון retro-chic עם נוף פנורמי על מרכז העיר.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=500&q=80" alt="ארוחה" class="item-img">
+                </div>
+            </div>
+        </div>
+
+        <!-- יום 14 -->
+        <div id="day-14" class="day-content">
+            <div class="pro-tip-box">
+                <h4><i class="fa-solid fa-wand-magic-sparkles"></i> טיפ מעשי ליום 14</h4>
+                <p>צאו לשדה התעופה לפחות 3.5 שעות לפני זמן הטיסה המיועד (13:10 PM). התורים בבידוק הביטחוני ובביקורת הדרכונים בשדה התעופה הונרי קואנדה עשויים להיות ארוכים מאוד.</p>
+            </div>
+            <div class="accommodation-info">
+                <div><strong><i class="fa-solid fa-plane-arrival"></i> יום סיום:</strong> שופינג אחרון, סיום הטיול וטיסה חזרה (13:10 PM)</div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="item-details">
+                        <span class="time-badge">09:00</span>
+                        <h4 class="item-title">ארמון הפרלמנט וסיבוב מזכרות בעיר העתיקה</h4>
+                        <p class="item-desc">תצפית על בניין הפרלמנט העצום (השני בגודלו בעולם) וסיבוב אחרון לקניית מזכרות.</p>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Palace+of+Parliament+Bucharest" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-14-1')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-14-1" class="info-drawer">
+                            <h5><i class="fa-solid fa-landmark"></i> תצפית וצילום:</h5>
+                            <ul>
+                                <li><strong>נקודת הצילום הטובה ביותר:</strong> מרחבת Bulevardul Unirii מול הפרלמנט נקלט גודלו העצום של הבניין בצורה הטובה ביותר.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1584646098378-0874589d76b1?auto=format&fit=crop&w=500&q=80" alt="הפרלמנט" class="item-img">
+                </div>
+                <div class="timeline-item">
+                    <div class="item-details">
+                        <span class="time-badge">10:30</span>
+                        <h4 class="item-title">נסיעה לשדה התעופה OTP</h4>
+                        <p class="item-desc">איסוף המזוודות מהדירה ונסיעה ב-Bolt / Uber לשדה התעופה Henri Coandă לקראת טיסת חזור (W43263 ב-13:10 PM).</p>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Henri+Coandă+International+Airport" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> Google Maps</a>
+                            <button class="btn-map btn-info" onclick="toggleInfo('info-14-2')"><i class="fa-solid fa-circle-info"></i> Info</button>
+                        </div>
+                        <div id="info-14-2" class="info-drawer">
+                            <h5><i class="fa-solid fa-plane-departure"></i> בשדה התעופה:</h5>
+                            <ul>
+                                <li>הכינו מראש את כרטיסי העלייה למטוס (Boarding Passes) באפליקציית Wizz Air.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1542296332-2e4473faf563?auto=format&fit=crop&w=500&q=80" alt="שדה תעופה" class="item-img">
+                </div>
+            </div>
+        </div>
+
+        <!-- לשונית מידע וטיפים שימושיים -->
+        <div id="day-15" class="day-content">
+            <div class="widget-card">
+                <h3><i class="fa-solid fa-circle-info"></i> מידע ודגשים חיוניים לתיירים ברומניה</h3>
+                <ul class="info-list">
+                    <li>
+                        <i class="fa-solid fa-car"></i>
+                        <div>
+                            <strong>נהיגה וכבישי אגרה:</strong>
+                            ודאו שלרכב יש תג Rovinieta (כבישי אגרה). ברוב חברות ההשכרה זה כלול, אך כדאי לבדוק בקבלת הרכב.
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                        <div>
+                            <strong>סים ותקשורת:</strong>
+                            מומלץ לרכוש eSIM (כמו Airalo / Maya) או סים מקומי של Vodafone/Orange בשדה התעופה לניווט רציף.
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-taxi"></i>
+                        <div>
+                            <strong>תחבורה בבוקרשט:</strong>
+                            השתמשו אך ורק באפליקציות **Bolt** או **Uber**. הימנעו מעלייה למוניות צהובות ברחוב ללא הפעלת מונה.
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-shield-cat"></i>
+                        <div>
+                            <strong>זהירות מדובים:</strong>
+                            באזורי ההרים (הטרנספגראשן, אגם סנט אנה, סינאיה) ישנה נוכחות רבה של דובים. אין לצאת מהרכב ליד דוב, אין להאכיל ואין להשאיר שאריות אוכל בטבע.
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-credit-card"></i>
+                        <div>
+                            <strong>מזומן מול כרטיסי אשראי:</strong>
+                            ברוב הערים והמסעדות מקבלים אשראי. כדאי להחזיק מעט מזומן (RON) עבור דוכני דרכים, טיפים וחניונים קטנים בכפרים.
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-square-parking"></i>
+                        <div>
+                            <strong>אפליקציית חנייה:</strong>
+                            בערים כמו ברשוב וסיביו נוח להשתמש באפליקציות TPARK או Park4Dis לתשלום מהיר על חנייה.
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-phone"></i>
+                        <div>
+                            <strong>מספרי חירום:</strong>
+                            מספר חירום כללי ברומניה: <strong>112</strong>. לשירות חילוץ בהרים (Salvamont): <strong>0725 826 668</strong>.
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
 
@@ -931,6 +1951,17 @@
                 ilsInput.value = ronInput.value ? (parseFloat(ronInput.value) * rate).toFixed(2) : '';
             } else {
                 ronInput.value = ilsInput.value ? (parseFloat(ilsInput.value) / rate).toFixed(2) : '';
+            }
+        }
+
+        function toggleInfo(infoId) {
+            const el = document.getElementById(infoId);
+            if (el) {
+                if (el.style.display === 'block') {
+                    el.style.display = 'none';
+                } else {
+                    el.style.display = 'block';
+                }
             }
         }
     </script>
