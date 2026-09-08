@@ -455,6 +455,62 @@
             gap: 6px;
         }
 
+        /* כפתור ההמלצות - ורוד תואם לאייקונים */
+        .btn-recommend {
+            background-color: #ec4899;
+            color: white;
+        }
+
+        .btn-recommend:hover {
+            background-color: #db2777;
+            opacity: 0.95;
+        }
+
+        .recommend-drawer {
+            display: none;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 12px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            background-color: var(--weather-box-bg);
+            border-right: 4px solid var(--secondary);
+            color: var(--text);
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .recommend-drawer h5 {
+            margin: 0 0 8px 0;
+            font-size: 0.95rem;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .recommend-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .recommend-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background-color: var(--secondary);
+            color: white;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        .recommend-link:hover {
+            opacity: 0.9;
+        }
+
         .info-drawer ul, .photo-drawer ul, .alt-drawer ul {
             margin: 6px 0 0 0;
             padding-right: 18px;
@@ -576,7 +632,19 @@
                 <div><strong><i class="fa-solid fa-hotel"></i> לינה בסיס 1 (15-20 בספטמבר):</strong> Brasov Holiday Apartments Bloc B21 Str Egretei 3 Brașov</div>
                 <a href="https://maps.google.com/?q=Brasov+Holiday+Apartments+Bloc+B21+Str+Egretei+3+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט לדירה בבראשוב</a>
             </div>
-            <div class="timeline">
+            
+            <div class="action-buttons">
+                <button class="btn-map btn-recommend" onclick="toggleRecommendations('recommend-1')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות בBrașov</button>
+            </div>
+            <div id="recommend-1" class="recommend-drawer">
+                <h5><i class="fa-solid fa-star"></i> המלצות בBrașov</h5>
+                <div class="recommend-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Brasov, Romania best restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Brasov, Romania recommended places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Brasov, Romania attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                </div>
+            </div>
+<div class="timeline">
                 <div class="timeline-item">
                     <div class="item-details">
                         <span class="time-badge">13:00</span>
@@ -586,6 +654,17 @@
                             <a href="https://maps.google.com/?q=Henri+Coanda+International+Airport" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-1-1')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-1-1')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-1')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-1" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Bucharest%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Bucharest%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Bucharest%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-1-1" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -612,6 +691,17 @@
                             <a href="https://maps.google.com/?q=La+Mama+Sinaia" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-1-2')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-1-2')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-2')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-2" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sinaia%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sinaia%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sinaia%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-1-2" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -638,6 +728,17 @@
                             <a href="https://maps.google.com/?q=Strada+Egretei+3+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט לדירה</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-1-3')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-1-3')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-3')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-3" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Brasov%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Brasov%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Brasov%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-1-3" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -664,6 +765,17 @@
                             <a href="https://maps.google.com/?q=Piata+Sfatului+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-1-4')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-1-4')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-4')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-4" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Pia%C8%9Ba+Sfatului%2C+Brasov%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Pia%C8%9Ba+Sfatului%2C+Brasov%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Pia%C8%9Ba+Sfatului%2C+Brasov%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-1-4" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -690,6 +802,17 @@
                             <a href="https://maps.google.com/?q=Sergiana+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-1-5')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-1-5')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-5')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-5" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sergiana%2C+Brasov%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sergiana%2C+Brasov%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sergiana%2C+Brasov%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-1-5" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -719,7 +842,19 @@
                 <div><strong><i class="fa-solid fa-hotel"></i> לינה בסיס 1:</strong> Brasov Holiday Apartments, Brașov</div>
                 <a href="https://maps.google.com/?q=Brasov+Holiday+Apartments+Bloc+B21+Str+Egretei+3+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט לדירה בבראשוב</a>
             </div>
-            <div class="timeline">
+            
+            <div class="action-buttons">
+                <button class="btn-map btn-recommend" onclick="toggleRecommendations('recommend-2')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות בBrașov</button>
+            </div>
+            <div id="recommend-2" class="recommend-drawer">
+                <h5><i class="fa-solid fa-star"></i> המלצות בBrașov</h5>
+                <div class="recommend-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Brasov, Romania best restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Brasov, Romania recommended places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Brasov, Romania attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                </div>
+            </div>
+<div class="timeline">
                 <div class="timeline-item">
                     <div class="item-details">
                         <span class="time-badge">09:30</span>
@@ -729,6 +864,17 @@
                             <a href="https://maps.google.com/?q=Dino+Parc+Rasnov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-2-1')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-2-1')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-6')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-6" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Dino+Parc+R%C3%A2%C8%99nov%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Dino+Parc+R%C3%A2%C8%99nov%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Dino+Parc+R%C3%A2%C8%99nov%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-2-1" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -755,6 +901,17 @@
                             <a href="https://maps.google.com/?q=Taverna+Bran" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-2-2')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-2-2')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-7')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-7" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Bran%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Bran%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Bran%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-2-2" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -781,6 +938,17 @@
                             <a href="https://maps.google.com/?q=Bran+Castle" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-2-3')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-2-3')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-8')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-8" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Bran+Castle%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Bran+Castle%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Bran+Castle%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-2-3" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -807,6 +975,17 @@
                             <a href="https://maps.google.com/?q=Strada+Sforii+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-2-4')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-2-4')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-9')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-9" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Brasov%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Brasov%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Brasov%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-2-4" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -833,6 +1012,17 @@
                             <a href="https://maps.google.com/?q=Strada+Republicii+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-2-5')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-2-5')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-10')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-10" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Brasov+Old+Town%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Brasov+Old+Town%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Brasov+Old+Town%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-2-5" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -862,7 +1052,19 @@
                 <div><strong><i class="fa-solid fa-hotel"></i> לינה בסיס 1:</strong> Brasov Holiday Apartments, Brașov</div>
                 <a href="https://maps.google.com/?q=Brasov+Holiday+Apartments+Bloc+B21+Str+Egretei+3+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט לדירה בבראשוב</a>
             </div>
-            <div class="timeline">
+            
+            <div class="action-buttons">
+                <button class="btn-map btn-recommend" onclick="toggleRecommendations('recommend-3')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות בBrașov</button>
+            </div>
+            <div id="recommend-3" class="recommend-drawer">
+                <h5><i class="fa-solid fa-star"></i> המלצות בBrașov</h5>
+                <div class="recommend-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Brasov, Romania best restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Brasov, Romania recommended places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Brasov, Romania attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                </div>
+            </div>
+<div class="timeline">
                 <div class="timeline-item">
                     <div class="item-details">
                         <span class="time-badge">09:00</span>
@@ -872,6 +1074,17 @@
                             <a href="https://maps.google.com/?q=Peles+Castle" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-3-1')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-3-1')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-11')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-11" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Pele%C8%99+Castle%2C+Sinaia%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Pele%C8%99+Castle%2C+Sinaia%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Pele%C8%99+Castle%2C+Sinaia%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-3-1" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -898,6 +1111,17 @@
                             <a href="https://maps.google.com/?q=Cuca+Macai+Sinaia" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-3-2')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-3-2')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-12')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-12" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sinaia%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sinaia%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sinaia%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-3-2" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -924,6 +1148,17 @@
                             <a href="https://maps.google.com/?q=Alpine+Coaster+Busteni" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-3-3')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-3-3')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-13')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-13" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Bu%C8%99teni%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Bu%C8%99teni%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Bu%C8%99teni%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-3-3" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -950,6 +1185,17 @@
                             <a href="https://maps.google.com/?q=Dimitrie+Ghica+Park+Sinaia" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-3-4')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-3-4')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-14')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-14" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Dimitrie+Ghica+Park%2C+Sinaia%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Dimitrie+Ghica+Park%2C+Sinaia%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Dimitrie+Ghica+Park%2C+Sinaia%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-3-4" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -976,6 +1222,17 @@
                             <a href="https://maps.google.com/?q=Taverna+Sarbului+Sinaia" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-3-5')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-3-5')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-15')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-15" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sinaia%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sinaia%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sinaia%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-3-5" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -1005,7 +1262,19 @@
                 <div><strong><i class="fa-solid fa-hotel"></i> לינה בסיס 1:</strong> Brasov Holiday Apartments, Brașov</div>
                 <a href="https://maps.google.com/?q=Brasov+Holiday+Apartments+Bloc+B21+Str+Egretei+3+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט לדירה בבראשוב</a>
             </div>
-            <div class="timeline">
+            
+            <div class="action-buttons">
+                <button class="btn-map btn-recommend" onclick="toggleRecommendations('recommend-4')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות בBrașov</button>
+            </div>
+            <div id="recommend-4" class="recommend-drawer">
+                <h5><i class="fa-solid fa-star"></i> המלצות בBrașov</h5>
+                <div class="recommend-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Brasov, Romania best restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Brasov, Romania recommended places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Brasov, Romania attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                </div>
+            </div>
+<div class="timeline">
                 <div class="timeline-item">
                     <div class="item-details">
                         <span class="time-badge">09:30</span>
@@ -1015,6 +1284,17 @@
                             <a href="https://maps.google.com/?q=Sfanta+Ana+Lake" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-4-1')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-4-1')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-16')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-16" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Saint+Anne+Lake%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Saint+Anne+Lake%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Saint+Anne+Lake%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-4-1" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -1041,6 +1321,17 @@
                             <a href="https://maps.google.com/?q=Parcare+Lacul+Sfanta+Ana" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-4-2')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-4-2')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-17')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-17" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Saint+Anne+Lake%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Saint+Anne+Lake%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Saint+Anne+Lake%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-4-2" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -1067,6 +1358,17 @@
                             <a href="https://maps.google.com/?q=Hanul+Hotarul" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-4-3')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-4-3')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-18')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-18" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=B%C4%83ile+Tu%C8%99nad%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=B%C4%83ile+Tu%C8%99nad%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=B%C4%83ile+Tu%C8%99nad%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-4-3" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -1093,6 +1395,17 @@
                             <a href="https://maps.google.com/?q=Brasov+Holiday+Apartments+Bloc+B21+Str+Egretei+3+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט לדירה</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-4-4')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-4-4')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-19')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-19" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Brasov%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Brasov%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Brasov%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-4-4" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -1119,6 +1432,17 @@
                             <a href="https://maps.google.com/?q=Roata+Norocului+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-4-5')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-4-5')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-20')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-20" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Roata+Norocului%2C+Brasov%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Roata+Norocului%2C+Brasov%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Roata+Norocului%2C+Brasov%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-4-5" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -1148,7 +1472,19 @@
                 <div><strong><i class="fa-solid fa-hotel"></i> לינה בסיס 1:</strong> Brasov Holiday Apartments, Brașov</div>
                 <a href="https://maps.google.com/?q=Brasov+Holiday+Apartments+Bloc+B21+Str+Egretei+3+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט לדירה בבראשוב</a>
             </div>
-            <div class="timeline">
+            
+            <div class="action-buttons">
+                <button class="btn-map btn-recommend" onclick="toggleRecommendations('recommend-5')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות בBrașov</button>
+            </div>
+            <div id="recommend-5" class="recommend-drawer">
+                <h5><i class="fa-solid fa-star"></i> המלצות בBrașov</h5>
+                <div class="recommend-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Brasov, Romania best restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Brasov, Romania recommended places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Brasov, Romania attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                </div>
+            </div>
+<div class="timeline">
                 <div class="timeline-item">
                     <div class="item-details">
                         <span class="time-badge">10:00</span>
@@ -1158,6 +1494,17 @@
                             <a href="https://maps.google.com/?q=Parc+Aventura+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-5-1')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-5-1')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-21')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-21" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Parc+Aventura+Bra%C8%99ov%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Parc+Aventura+Bra%C8%99ov%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Parc+Aventura+Bra%C8%99ov%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-5-1" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -1184,6 +1531,17 @@
                             <a href="https://maps.google.com/?q=Casa+Romaneasca+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-5-2')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-5-2')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-22')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-22" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Bra%C8%99ov%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Bra%C8%99ov%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Bra%C8%99ov%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-5-2" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -1210,6 +1568,17 @@
                             <a href="https://maps.google.com/?q=Telecabina+Tampa+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-5-3')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-5-3')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-23')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-23" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=T%C3%A2mpa+Mountain%2C+Bra%C8%99ov%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=T%C3%A2mpa+Mountain%2C+Bra%C8%99ov%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=T%C3%A2mpa+Mountain%2C+Bra%C8%99ov%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-5-3" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -1236,6 +1605,17 @@
                             <a href="https://maps.google.com/?q=Panoramic+Restaurant+Tampa+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-5-4')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-5-4')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-24')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-24" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Panoramic+Restaurant%2C+Bra%C8%99ov%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Panoramic+Restaurant%2C+Bra%C8%99ov%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Panoramic+Restaurant%2C+Bra%C8%99ov%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-5-4" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -1265,7 +1645,19 @@
                 <div><strong><i class="fa-solid fa-hotel"></i> לינה בסיס 1:</strong> Brasov Holiday Apartments, Brașov (לילה אחרון בבראשוב)</div>
                 <a href="https://maps.google.com/?q=Brasov+Holiday+Apartments+Bloc+B21+Str+Egretei+3+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט לדירה בבראשוב</a>
             </div>
-            <div class="timeline">
+            
+            <div class="action-buttons">
+                <button class="btn-map btn-recommend" onclick="toggleRecommendations('recommend-6')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות בBrașov</button>
+            </div>
+            <div id="recommend-6" class="recommend-drawer">
+                <h5><i class="fa-solid fa-star"></i> המלצות בBrașov</h5>
+                <div class="recommend-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Brasov, Romania best restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Brasov, Romania recommended places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Brasov, Romania attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                </div>
+            </div>
+<div class="timeline">
                 <div class="timeline-item">
                     <div class="item-details">
                         <span class="time-badge">09:30</span>
@@ -1275,6 +1667,17 @@
                             <a href="https://maps.google.com/?q=Viscri+Fortified+Church" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-6-1')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-6-1')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-25')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-25" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Viscri%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Viscri%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Viscri%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-6-1" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -1301,6 +1704,17 @@
                             <a href="https://maps.google.com/?q=Viscri+32" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-6-2')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-6-2')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-26')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-26" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Viscri%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Viscri%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Viscri%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-6-2" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -1327,6 +1741,17 @@
                             <a href="https://maps.google.com/?q=Rupea+Fortress" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-6-3')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-6-3')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-27')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-27" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Rupea+Fortress%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Rupea+Fortress%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Rupea+Fortress%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-6-3" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -1353,6 +1778,17 @@
                             <a href="https://maps.google.com/?q=Brasov+Holiday+Apartments+Bloc+B21+Str+Egretei+3+Brasov" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט לדירה</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-6-4')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-6-4')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-28')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-28" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Brasov%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Brasov%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Brasov%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-6-4" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -1382,7 +1818,19 @@
                 <div><strong><i class="fa-solid fa-hotel"></i> לינה בסיס 2 (21-22 בספטמבר):</strong> Ungefug A Frame Sighisoara Cartier Angofa Sighişoara</div>
                 <a href="https://maps.google.com/?q=Cartier+Angofa+Sighisoara" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט לבית העץ בסגישוארה</a>
             </div>
-            <div class="timeline">
+            
+            <div class="action-buttons">
+                <button class="btn-map btn-recommend" onclick="toggleRecommendations('recommend-7')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות בSighișoara</button>
+            </div>
+            <div id="recommend-7" class="recommend-drawer">
+                <h5><i class="fa-solid fa-star"></i> המלצות בSighișoara</h5>
+                <div class="recommend-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Sighisoara, Romania best restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Sighisoara, Romania recommended places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Sighisoara, Romania attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                </div>
+            </div>
+<div class="timeline">
                 <div class="timeline-item">
                     <div class="item-details">
                         <span class="time-badge">07:30</span>
@@ -1392,6 +1840,17 @@
                             <a href="https://maps.google.com/?q=Transfagarasan" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-7-1')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-7-1')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-29')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-29" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Transf%C4%83g%C4%83r%C4%83%C8%99an%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Transf%C4%83g%C4%83r%C4%83%C8%99an%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Transf%C4%83g%C4%83r%C4%83%C8%99an%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-7-1" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -1418,6 +1877,17 @@
                             <a href="https://maps.google.com/?q=Balea+Lac" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-7-2')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-7-2')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-30')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-30" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=B%C3%A2lea+Lake%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=B%C3%A2lea+Lake%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=B%C3%A2lea+Lake%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-7-2" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -1444,6 +1914,17 @@
                             <a href="https://maps.google.com/?q=Cartier+Angofa+Sighisoara" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט לבית העץ</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-7-3')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-7-3')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-31')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-31" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sighi%C8%99oara%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sighi%C8%99oara%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sighi%C8%99oara%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-7-3" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -1470,6 +1951,17 @@
                             <a href="https://maps.google.com/?q=Casa+Vlad+Dracul+Sighisoara" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-7-4')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-7-4')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-32')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-32" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sighi%C8%99oara%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sighi%C8%99oara%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sighi%C8%99oara%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-7-4" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -1499,7 +1991,19 @@
                 <div><strong><i class="fa-solid fa-hotel"></i> לינה בסיס 2:</strong> Ungefug A Frame Sighisoara, Sighişoara</div>
                 <a href="https://maps.google.com/?q=Cartier+Angofa+Sighisoara" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט לבית העץ בסגישוארה</a>
             </div>
-            <div class="timeline">
+            
+            <div class="action-buttons">
+                <button class="btn-map btn-recommend" onclick="toggleRecommendations('recommend-8')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות בSighișoara</button>
+            </div>
+            <div id="recommend-8" class="recommend-drawer">
+                <h5><i class="fa-solid fa-star"></i> המלצות בSighișoara</h5>
+                <div class="recommend-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Sighisoara, Romania best restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Sighisoara, Romania recommended places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Sighisoara, Romania attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                </div>
+            </div>
+<div class="timeline">
                 <div class="timeline-item">
                     <div class="item-details">
                         <span class="time-badge">10:00</span>
@@ -1509,6 +2013,17 @@
                             <a href="https://maps.google.com/?q=Sighisoara+Clock+Tower" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-8-1')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-8-1')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-33')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-33" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sighi%C8%99oara%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sighi%C8%99oara%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sighi%C8%99oara%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-8-1" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -1535,6 +2050,17 @@
                             <a href="https://maps.google.com/?q=Medieval+Cafe+Restaurant+Sighisoara" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-8-2')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-8-2')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-34')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-34" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sighi%C8%99oara%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sighi%C8%99oara%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sighi%C8%99oara%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-8-2" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -1561,6 +2087,17 @@
                             <a href="https://maps.google.com/?q=Covered+Stairway+Sighisoara" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-8-3')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-8-3')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-35')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-35" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sighi%C8%99oara%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sighi%C8%99oara%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sighi%C8%99oara%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-8-3" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -1587,6 +2124,17 @@
                             <a href="https://maps.google.com/?q=La+Taz+Sighisoara" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-8-4')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-8-4')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-36')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-36" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sighi%C8%99oara%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sighi%C8%99oara%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sighi%C8%99oara%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-8-4" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -1613,10 +2161,22 @@
                 <p>חפשו את חלונות הגג בצורת עיניים בבתים של סביו. מוזיאון ASTRA ענקי ומתאים מאוד להליכה נעימה בטבע עם הילדים.</p>
             </div>
             <div class="accommodation-info">
-                <div><strong><i class="fa-solid fa-hotel"></i> לינה בסיס 3 (23-24 בספטמבר):</strong> מלון / דירה במרכז סביו (Sibiu)</div>
-                <a href="https://maps.google.com/?q=Sibiu+Old+Town" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט למרכז סביו</a>
+                <div><strong><i class="fa-solid fa-hotel"></i> לינה בסיס 3 (23-24 בספטמבר):</strong> Sibiu Ezonia Central Apartment- Strada Iacob Bologa, 550423 Sibiu, Romania</div>
+                <a href="https://www.google.com/maps/search/?api=1&query=Sibiu+Ezonia+Central+Apartment%2C+Strada+Iacob+Bologa%2C+550423+Sibiu%2C+Romania" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט לדירה</a>
             </div>
-            <div class="timeline">
+            
+            <div class="action-buttons">
+                <button class="btn-map btn-recommend" onclick="toggleRecommendations('recommend-9')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות בSibiu</button>
+            </div>
+            <div id="recommend-9" class="recommend-drawer">
+                <h5><i class="fa-solid fa-star"></i> המלצות בSibiu</h5>
+                <div class="recommend-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Sibiu, Romania best restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Sibiu, Romania recommended places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Sibiu, Romania attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                </div>
+            </div>
+<div class="timeline">
                 <div class="timeline-item">
                     <div class="item-details">
                         <span class="time-badge">09:00</span>
@@ -1626,6 +2186,17 @@
                             <a href="https://maps.google.com/?q=Sibiu" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-9-1')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-9-1')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-37')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-37" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sibiu%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sibiu%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sibiu%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-9-1" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -1652,6 +2223,17 @@
                             <a href="https://maps.google.com/?q=Muzeul+ASTRA+Sibiu" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-9-2')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-9-2')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-38')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-38" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=ASTRA+Museum%2C+Sibiu%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=ASTRA+Museum%2C+Sibiu%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=ASTRA+Museum%2C+Sibiu%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-9-2" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -1678,6 +2260,17 @@
                             <a href="https://maps.google.com/?q=Crama+Sibiul+Vechi" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-9-3')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-9-3')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-39')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-39" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sibiu%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sibiu%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sibiu%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-9-3" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -1704,6 +2297,17 @@
                             <a href="https://maps.google.com/?q=Bridge+of+Lies+Sibiu" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-9-4')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-9-4')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-40')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-40" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sibiu%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sibiu%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sibiu%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-9-4" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -1730,6 +2334,17 @@
                             <a href="https://maps.google.com/?q=Kessel+Sibiu" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-9-5')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-9-5')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-41')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-41" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sibiu%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sibiu%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sibiu%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-9-5" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -1756,10 +2371,22 @@
                 <p>יום עשיר בנסיעות ובאתרים מדהימים. מכרות המלח בטורדה עמוקים ומעוצבים בצורה פנומנלית - שימו לב שקריר בפנים (כ-12 מעלות).</p>
             </div>
             <div class="accommodation-info">
-                <div><strong><i class="fa-solid fa-hotel"></i> לינה בסיס 3:</strong> מלון / דירה במרכז סביו (Sibiu)</div>
-                <a href="https://maps.google.com/?q=Sibiu+Old+Town" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט למרכז סביו</a>
+                <div><strong><i class="fa-solid fa-hotel"></i> לינה בסיס 3:</strong> Sibiu Ezonia Central Apartment- Strada Iacob Bologa, 550423 Sibiu, Romania</div>
+                <a href="https://www.google.com/maps/search/?api=1&query=Sibiu+Ezonia+Central+Apartment%2C+Strada+Iacob+Bologa%2C+550423+Sibiu%2C+Romania" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט לדירה</a>
             </div>
-            <div class="timeline">
+            
+            <div class="action-buttons">
+                <button class="btn-map btn-recommend" onclick="toggleRecommendations('recommend-10')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות בSibiu</button>
+            </div>
+            <div id="recommend-10" class="recommend-drawer">
+                <h5><i class="fa-solid fa-star"></i> המלצות בSibiu</h5>
+                <div class="recommend-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Sibiu, Romania best restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Sibiu, Romania recommended places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Sibiu, Romania attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                </div>
+            </div>
+<div class="timeline">
                 <div class="timeline-item">
                     <div class="item-details">
                         <span class="time-badge">08:00</span>
@@ -1769,6 +2396,17 @@
                             <a href="https://maps.google.com/?q=Hunedoara" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-10-1')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-10-1')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-42')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-42" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Hunedoara%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Hunedoara%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Hunedoara%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-10-1" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -1795,6 +2433,17 @@
                             <a href="https://maps.google.com/?q=Corvin+Castle" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-10-2')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-10-2')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-43')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-43" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Corvin+Castle%2C+Hunedoara%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Corvin+Castle%2C+Hunedoara%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Corvin+Castle%2C+Hunedoara%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-10-2" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -1821,6 +2470,17 @@
                             <a href="https://maps.google.com/?q=Salina+Turda" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-10-3')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-10-3')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-44')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-44" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Turda%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Turda%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Turda%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-10-3" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -1847,6 +2507,17 @@
                             <a href="https://maps.google.com/?q=Turda" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-10-4')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-10-4')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-45')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-45" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Turda%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Turda%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Turda%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-10-4" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -1873,6 +2544,17 @@
                             <a href="https://maps.google.com/?q=Salina+Turda" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-10-5')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-10-5')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-46')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-46" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Salina+Turda%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Salina+Turda%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Salina+Turda%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-10-5" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -1899,6 +2581,17 @@
                             <a href="https://maps.google.com/?q=Sibiu" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-10-6')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-10-6')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-47')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-47" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sibiu%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sibiu%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sibiu%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-10-6" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -1925,6 +2618,17 @@
                             <a href="https://maps.google.com/?q=Sibiu+Old+Town" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-10-7')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-10-7')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-48')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-48" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sibiu%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sibiu%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sibiu%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-10-7" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -1954,7 +2658,19 @@
                 <div><strong><i class="fa-solid fa-hotel"></i> לינה בסיס 4 (25-27 בספטמבר):</strong> 2J Splaiul Independenței Sector 3 030099 Bucharest</div>
                 <a href="https://maps.google.com/?q=Splaiul+Independentei+Bucharest" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט לדירה בבוקרשט</a>
             </div>
-            <div class="timeline">
+            
+            <div class="action-buttons">
+                <button class="btn-map btn-recommend" onclick="toggleRecommendations('recommend-11')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות בBucharest</button>
+            </div>
+            <div id="recommend-11" class="recommend-drawer">
+                <h5><i class="fa-solid fa-star"></i> המלצות בBucharest</h5>
+                <div class="recommend-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Bucharest, Romania best restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Bucharest, Romania recommended places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Bucharest, Romania attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                </div>
+            </div>
+<div class="timeline">
                 <div class="timeline-item">
                     <div class="item-details">
                         <span class="time-badge">09:30</span>
@@ -1964,6 +2680,17 @@
                             <a href="https://maps.google.com/?q=Bucharest" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-11-1')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-11-1')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-49')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-49" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Bucharest%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Bucharest%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Bucharest%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-11-1" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -1990,6 +2717,17 @@
                             <a href="https://maps.google.com/?q=Splaiul+Independentei+Bucharest" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט לדירה</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-11-2')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-11-2')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-50')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-50" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Bucharest%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Bucharest%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Bucharest%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-11-2" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -2016,6 +2754,17 @@
                             <a href="https://maps.google.com/?q=Lipscani+Bucharest" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-11-3')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-11-3')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-51')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-51" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Lipscani%2C+Bucharest%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Lipscani%2C+Bucharest%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Lipscani%2C+Bucharest%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-11-3" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -2042,6 +2791,17 @@
                             <a href="https://maps.google.com/?q=Caru+cu+Bere+Bucharest" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-11-4')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-11-4')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-52')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-52" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Caru+cu+Bere%2C+Bucharest%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Caru+cu+Bere%2C+Bucharest%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Caru+cu+Bere%2C+Bucharest%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-11-4" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -2071,7 +2831,19 @@
                 <div><strong><i class="fa-solid fa-hotel"></i> לינה בסיס 4:</strong> 2J Splaiul Independenței, Bucharest</div>
                 <a href="https://maps.google.com/?q=Splaiul+Independentei+Bucharest" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט לדירה בבוקרשט</a>
             </div>
-            <div class="timeline">
+            
+            <div class="action-buttons">
+                <button class="btn-map btn-recommend" onclick="toggleRecommendations('recommend-12')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות בBucharest</button>
+            </div>
+            <div id="recommend-12" class="recommend-drawer">
+                <h5><i class="fa-solid fa-star"></i> המלצות בBucharest</h5>
+                <div class="recommend-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Bucharest, Romania best restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Bucharest, Romania recommended places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Bucharest, Romania attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                </div>
+            </div>
+<div class="timeline">
                 <div class="timeline-item">
                     <div class="item-details">
                         <span class="time-badge">10:00</span>
@@ -2081,6 +2853,17 @@
                             <a href="https://maps.google.com/?q=Palatul+Parlamentului+Bucharest" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-12-1')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-12-1')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-53')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-53" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Palace+of+Parliament%2C+Bucharest%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Palace+of+Parliament%2C+Bucharest%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Palace+of+Parliament%2C+Bucharest%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-12-1" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -2107,6 +2890,17 @@
                             <a href="https://maps.google.com/?q=Hard+Rock+Cafe+Bucharest" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-12-2')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-12-2')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-54')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-54" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Hard+Rock+Cafe+Bucharest%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Hard+Rock+Cafe+Bucharest%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Hard+Rock+Cafe+Bucharest%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-12-2" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -2133,6 +2927,17 @@
                             <a href="https://maps.google.com/?q=Herastrau+Park+Bucharest" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-12-3')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-12-3')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-55')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-55" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=King+Michael+I+Park%2C+Bucharest%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=King+Michael+I+Park%2C+Bucharest%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=King+Michael+I+Park%2C+Bucharest%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-12-3" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -2159,6 +2964,17 @@
                             <a href="https://maps.google.com/?q=Trattoria+Il+Calcio+Bucharest" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-12-4')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-12-4')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-56')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-56" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Bucharest%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Bucharest%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Bucharest%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-12-4" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -2181,90 +2997,209 @@
         <!-- יום 13 -->
         <div id="day-12" class="day-content">
             <div class="pro-tip-box">
-                <h4><i class="fa-solid fa-wand-magic-sparkles"></i> טיפ ליום 13 - פארק המים ותצוגת מזרקות</h4>
-                <p>Terme București הוא פארק המים והספא המקורה הגדול באירופה - אל תשכחו בגדי ים ומגבות! בערב בקרו במופע המזרקות בכיכר Unirii.</p>
+                <h4><i class="fa-solid fa-wand-magic-sparkles"></i> טיפ ליום 13 - טבע, חיות, פארק וקניות</h4>
+                <p>במקום Therme: יום מגוון שמתאים מאוד לבנות — מתחילים במוזיאון אנטיפה עם דינוזאורים ובעלי חיים, ממשיכים למוזיאון הכפר הפתוח ולמנוחה בפארק, אחר כך קניות אחרונות ובערב ארוחה ומזרקות בכיכר Unirii.</p>
             </div>
             <div class="accommodation-info">
                 <div><strong><i class="fa-solid fa-hotel"></i> לינה בסיס 4:</strong> 2J Splaiul Independenței, Bucharest (לילה אחרון ברומניה)</div>
                 <a href="https://maps.google.com/?q=Splaiul+Independentei+Bucharest" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט לדירה בבוקרשט</a>
             </div>
-            <div class="timeline">
+
+            <div class="action-buttons">
+                <button class="btn-map btn-recommend" onclick="toggleRecommendations('recommend-13')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות בBucharest</button>
+            </div>
+            <div id="recommend-13" class="recommend-drawer">
+                <h5><i class="fa-solid fa-star"></i> המלצות בBucharest</h5>
+                <div class="recommend-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Bucharest, Romania best restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Bucharest, Romania recommended places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Bucharest, Romania attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                </div>
+            </div>
+<div class="timeline">
                 <div class="timeline-item">
                     <div class="item-details">
                         <span class="time-badge">10:00</span>
-                        <h4 class="item-title">Terme București</h4>
-                        <p class="item-desc">יום כיף אולטימטיבי בפארק המים והתרעננות המקורה הגדול באירופה (חנייה ענקית במקום).</p>
+                        <h4 class="item-title">מוזיאון אנטיפה (Grigore Antipa) 🦖</h4>
+                        <p class="item-desc">מוזיאון טבע מצוין למשפחות עם תצוגות של בעלי חיים, מערכות אקולוגיות, מאובנים ודינוזאורים. מומלץ להקדיש כ-1.5–2 שעות ולא להפוך את הביקור למרתון.</p>
                         <div class="action-buttons">
-                            <a href="https://maps.google.com/?q=Terme+Bucuresti" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
+                            <a href="https://maps.google.com/?q=Grigore+Antipa+National+Museum+of+Natural+History+Bucharest" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-13-1')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-13-1')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-57')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-57" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Grigore+Antipa+Museum+Bucharest+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Grigore+Antipa+Museum+Bucharest+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Grigore+Antipa+Museum+Bucharest+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-13-1" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
                             <ul>
-                                <li>במקרה שמעדיפים קניות עירוניות: בילוי במרכז הקניות הענק AFI Cotroceni הכולל משטח החלקה על הקרח וקארטינג מקורה.</li>
+                                <li>אם הבנות פחות בעניין של מוזיאון: מוזיאון הילדים (Muzeul Copiilor) או פעילות אינטראקטיבית אחרת שמתאימה לגילן — כדאי לבדוק זמינות ולהזמין מראש.</li>
                             </ul>
                         </div>
                         <div id="photo-13-1" class="photo-drawer">
                             <h5><i class="fa-solid fa-camera"></i> טיפי צילום - מקומות שחייב לצלם:</h5>
                             <ul>
-                                <li>תמונה טרופית משפחתית תחת אלפי עצי הדקל הבנויים תחת כיפת זכוכית ענקית במתחם הגלקסי.</li>
+                                <li>צילום ליד שלדי הדינוזאורים ובתוך הדיאורמות הגדולות של בעלי החיים.</li>
                             </ul>
                         </div>
                     </div>
-                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=500&q=80" alt="טרמה בוקרשט" class="item-img">
+                    <img src="https://images.unsplash.com/photo-1534777367038-9404f45b8695?auto=format&fit=crop&w=500&q=80" alt="מוזיאון טבע ודינוזאורים" class="item-img">
                 </div>
 
                 <div class="timeline-item">
                     <div class="item-details">
-                        <span class="time-badge">16:30</span>
-                        <h4 class="item-title">חזרה למרכז העיר וקניות אחרונות</h4>
-                        <p class="item-desc">חזרה לבוקרשט להצטיידות במזכרות וסיבוב אחרון ברחובות העיר.</p>
+                        <span class="time-badge">12:15</span>
+                        <h4 class="item-title">מוזיאון הכפר הלאומי (Muzeul Satului) 🏡</h4>
+                        <p class="item-desc">מוזיאון פתוח עם בתים מסורתיים מכל רחבי רומניה. זה נותן לבנות שינוי אווירה אחרי המוזיאון המקורה והרבה יותר מקום להסתובב בחופשיות.</p>
                         <div class="action-buttons">
-                            <a href="https://maps.google.com/?q=Calea+Victoriei+Bucharest" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
+                            <a href="https://maps.google.com/?q=Dimitrie+Gusti+National+Village+Museum+Bucharest" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-13-2')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-13-2')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-58')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-58" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Village+Museum+Bucharest+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Village+Museum+Bucharest+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Village+Museum+Bucharest+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-13-2" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
                             <ul>
-                                <li>ביקור בחנות הספרים המרהיבה Carturesti Carusel שברחוב Lipscani.</li>
+                                <li>אם מזג האוויר לא מתאים למוזיאון פתוח, אפשר להאריך את הביקור באנטיפה ולצאת למנוחה וקפה באזור Kiseleff.</li>
                             </ul>
                         </div>
                         <div id="photo-13-2" class="photo-drawer">
                             <h5><i class="fa-solid fa-camera"></i> טיפי צילום - מקומות שחייב לצלם:</h5>
                             <ul>
-                                <li>המדפים הלבנים המעוקלים ועיצוב הפנים האדריכלי המרהיב של חנות הספרים קארטורסטי.</li>
+                                <li>צילום משפחתי ליד בתי העץ, טחנות הרוח והאגם — אחד המקומות היפים לתמונות משפחתיות בבוקרשט.</li>
                             </ul>
                         </div>
                     </div>
-                    <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=500&q=80" alt="קניות בבוקרשט" class="item-img">
+                    <img src="https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=500&q=80" alt="מוזיאון הכפר בבוקרשט" class="item-img">
                 </div>
 
                 <div class="timeline-item">
                     <div class="item-details">
-                        <span class="time-badge">19:30</span>
-                        <h4 class="item-title">ארוחת ערב מסכמת ומופע מזרקות Unirii</h4>
-                        <p class="item-desc">ארוחת ערב חגיגית וצפייה במופע המים והאורות המרהיב בכיכר אונירי.</p>
+                        <span class="time-badge">14:30</span>
+                        <h4 class="item-title">ארוחת צהריים ומנוחה בפארק קישמיג'יו (Cișmigiu) 🌳</h4>
+                        <p class="item-desc">ארוחה קלה ולאחריה זמן חופשי בפארק המרכזי — אגם, שבילים, מרחבים ירוקים ומקום טוב להוריד הילוך לפני הקניות.</p>
                         <div class="action-buttons">
-                            <a href="https://maps.google.com/?q=Piata+Unirii+Fountains+Bucharest" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
+                            <a href="https://maps.google.com/?q=Cismigiu+Gardens+Bucharest" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-13-3')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-13-3')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-59')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-59" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Cismigiu+Gardens+Bucharest+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Cismigiu+Gardens+Bucharest+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Cismigiu+Gardens+Bucharest+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-13-3" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
                             <ul>
-                                <li>ארוחת ערב במסעדה המשקיפה על המזרקות בכיכר אונירי.</li>
+                                <li>אם הבנות עדיין מלאות באנרגיה, אפשר לוותר על המנוחה ולעבור מוקדם יותר ל-Calea Victoriei ולקניות.</li>
                             </ul>
                         </div>
                         <div id="photo-13-3" class="photo-drawer">
                             <h5><i class="fa-solid fa-camera"></i> טיפי צילום - מקומות שחייב לצלם:</h5>
                             <ul>
-                                <li>צילום חשיפה ארוכה של סילוני المים המוארים בשלל צבעי קשת לצלילי מוזיקה בכיכר אונירי.</li>
+                                <li>צילום על שפת האגם, ליד הגשרונים והברבורים בפארק.</li>
                             </ul>
                         </div>
                     </div>
-                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=500&q=80" alt="מופע מזרקות בוקרשט" class="item-img">
+                    <img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=500&q=80" alt="פארק ירוק בבוקרשט" class="item-img">
+                </div>
+
+                <div class="timeline-item">
+                    <div class="item-details">
+                        <span class="time-badge">17:00</span>
+                        <h4 class="item-title">קניות אחרונות ב-Calea Victoriei ובמרכז העיר 🛍️</h4>
+                        <p class="item-desc">זמן רגוע למזכרות, חנויות וקפה לפני הערב האחרון. אפשר לשלב עצירה ב-Cărturești Carusel אם עדיין לא ביקרתם שם.</p>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Calea+Victoriei+Bucharest" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
+                            <button class="btn-map btn-alt" onclick="toggleAlt('alt-13-4')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
+                            <button class="btn-map btn-photo" onclick="togglePhoto('photo-13-4')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-60')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-60" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Calea+Victoriei+Bucharest+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Calea+Victoriei+Bucharest+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Calea+Victoriei+Bucharest+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
+                        </div>
+                        <div id="alt-13-4" class="alt-drawer">
+                            <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
+                            <ul>
+                                <li>אם רוצים יותר אקשן ופחות קניות, אפשר להחליף את הזמן הזה ב-AFI Cotroceni — מתחם עם מגוון פעילויות משפחתיות. בדקו מראש מה פתוח בתאריך שלכם.</li>
+                            </ul>
+                        </div>
+                        <div id="photo-13-4" class="photo-drawer">
+                            <h5><i class="fa-solid fa-camera"></i> טיפי צילום - מקומות שחייב לצלם:</h5>
+                            <ul>
+                                <li>צילום משפחתי ברחובות המרכז ובחנות Cărturești Carusel.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1521334884684-d80222895322?auto=format&fit=crop&w=500&q=80" alt="קניות בבוקרשט" class="item-img">
+                </div>
+
+                <div class="timeline-item">
+                    <div class="item-details">
+                        <span class="time-badge">19:30</span>
+                        <h4 class="item-title">ארוחת ערב מסכמת ומופע מזרקות Unirii ✨</h4>
+                        <p class="item-desc">ארוחת ערב חגיגית וצפייה במופע המים והאורות בכיכר Unirii, בכפוף לשעות המופע העדכניות בתאריך הביקור.</p>
+                        <div class="action-buttons">
+                            <a href="https://maps.google.com/?q=Piata+Unirii+Fountains+Bucharest" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
+                            <button class="btn-map btn-alt" onclick="toggleAlt('alt-13-5')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
+                            <button class="btn-map btn-photo" onclick="togglePhoto('photo-13-5')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-61')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-61" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Unirii+Square+Bucharest+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Unirii+Square+Bucharest+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Unirii+Square+Bucharest+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
+                        </div>
+                        <div id="alt-13-5" class="alt-drawer">
+                            <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
+                            <ul>
+                                <li>אם המזרקות לא פועלות באותו ערב, פשוט להפוך את הערב לסיבוב יפה בכיכר Unirii ובעיר העתיקה עם ארוחת ערב חגיגית.</li>
+                            </ul>
+                        </div>
+                        <div id="photo-13-5" class="photo-drawer">
+                            <h5><i class="fa-solid fa-camera"></i> טיפי צילום - מקומות שחייב לצלם:</h5>
+                            <ul>
+                                <li>צילום משפחתי בכיכר Unirii עם אורות הערב; אם המזרקות פעילות, צילום מרחוק יתן פריים רחב יותר.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=500&q=80" alt="ערב משפחתי בבוקרשט" class="item-img">
                 </div>
             </div>
         </div>
@@ -2279,7 +3214,19 @@
                 <div><strong><i class="fa-solid fa-hotel"></i> סיום הטיול:</strong> נמל התעופה הבינלאומי אנרי קואנדה בוקרשט (OTP)</div>
                 <a href="https://maps.google.com/?q=Henri+Coanda+International+Airport" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט לשדה התעופה</a>
             </div>
-            <div class="timeline">
+            
+            <div class="action-buttons">
+                <button class="btn-map btn-recommend" onclick="toggleRecommendations('recommend-14')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות בBucharest</button>
+            </div>
+            <div id="recommend-14" class="recommend-drawer">
+                <h5><i class="fa-solid fa-star"></i> המלצות בBucharest</h5>
+                <div class="recommend-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Bucharest, Romania best restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Bucharest, Romania recommended places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Bucharest, Romania attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                </div>
+            </div>
+<div class="timeline">
                 <div class="timeline-item">
                     <div class="item-details">
                         <span class="time-badge">09:00</span>
@@ -2289,6 +3236,17 @@
                             <a href="https://maps.google.com/?q=Splaiul+Independentei+Bucharest" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-14-1')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-14-1')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-60')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-60" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Bucharest%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Bucharest%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Bucharest%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-14-1" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -2315,6 +3273,17 @@
                             <a href="https://maps.google.com/?q=Henri+Coanda+International+Airport" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-14-2')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-14-2')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-61')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-61" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Henri+Coand%C4%83+International+Airport%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Henri+Coand%C4%83+International+Airport%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Henri+Coand%C4%83+International+Airport%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-14-2" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -2341,6 +3310,17 @@
                             <a href="https://maps.google.com/?q=Ben+Gurion+Airport" target="_blank" class="btn-map"><i class="fa-solid fa-location-dot"></i> ניווט לנתב"ג</a>
                             <button class="btn-map btn-alt" onclick="toggleAlt('alt-14-3')"><i class="fa-solid fa-shuffle"></i> חלופה</button>
                             <button class="btn-map btn-photo" onclick="togglePhoto('photo-14-3')"><i class="fa-solid fa-camera"></i> טיפי צילום</button>
+                        </div>            
+                        <div class="action-buttons">
+                            <button class="btn-map btn-recommend" onclick="toggleRecommendations('item-recommend-62')" aria-expanded="false"><i class="fa-solid fa-star"></i> המלצות</button>
+                        </div>
+                        <div id="item-recommend-62" class="recommend-drawer">
+                            <h5><i class="fa-solid fa-star"></i> המלצות סביב המקום</h5>
+                            <div class="recommend-links">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Henri+Coand%C4%83+International+Airport%2C+Romania+best+restaurants" target="_blank" class="recommend-link"><i class="fa-solid fa-utensils"></i> אוכל</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Henri+Coand%C4%83+International+Airport%2C+Romania+recommended+places" target="_blank" class="recommend-link"><i class="fa-solid fa-thumbs-up"></i> מומלץ</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Henri+Coand%C4%83+International+Airport%2C+Romania+attractions" target="_blank" class="recommend-link"><i class="fa-solid fa-landmark"></i> אטרקציות</a>
+                            </div>
                         </div>
                         <div id="alt-14-3" class="alt-drawer">
                             <h5><i class="fa-solid fa-shuffle"></i> חלופה / תכנית ב':</h5>
@@ -2403,6 +3383,18 @@
         function togglePhoto(id) {
             const el = document.getElementById(id);
             el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+        }
+
+        function toggleRecommendations(id) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            const isOpen = el.style.display === 'block';
+            el.style.display = isOpen ? 'none' : 'block';
+            const button = document.querySelector('[onclick="toggleRecommendations(\'' + id + '\')"]');
+            if (button) {
+                button.setAttribute('aria-expanded', String(!isOpen));
+                button.setAttribute('aria-controls', id);
+            }
         }
         function toggleAlt(id) {
             const el = document.getElementById(id);
